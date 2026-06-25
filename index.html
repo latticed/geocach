@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoCachePlaner — Eigenen Cachekurs erstellen</title>
+  <meta name="description" content="Plane deinen eigenen Geocaching-Kurs mit über 30 Aufgaben- und Rätselvorschlägen. Filtere nach Kategorie und Schwierigkeit, stelle deinen Kurs zusammen und drucke ihn aus.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        <polygon points="24,4 27,20 24,18 21,20" fill="#c9a84c"/>
+        <polygon points="24,44 21,28 24,30 27,28" fill="currentColor" opacity="0.6"/>
+        <polygon points="4,24 20,21 18,24 20,27" fill="currentColor" opacity="0.6"/>
+        <polygon points="44,24 28,27 30,24 28,21" fill="currentColor" opacity="0.6"/>
+        <text x="24" y="12" text-anchor="middle" font-size="6" font-weight="bold" fill="#c9a84c" font-family="Georgia,serif">N</text>
+        <text x="24" y="41" text-anchor="middle" font-size="5" fill="currentColor" font-family="Georgia,serif" opacity="0.7">S</text>
+        <text x="8" y="26.5" text-anchor="middle" font-size="5" fill="currentColor" font-family="Georgia,serif" opacity="0.7">W</text>
+        <text x="40" y="26.5" text-anchor="middle" font-size="5" fill="currentColor" font-family="Georgia,serif" opacity="0.7">O</text>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-title">GeoCachePlaner</span>
+        <span class="logo-sub">Rätsel &amp; Aufgaben für deinen Kurs</span>
+      </div>
+    </div>
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" data-tab="bibliothek" role="tab" aria-selected="true" aria-controls="tab-bibliothek">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+        Bibliothek
+      </button>
+      <button class="tab-btn" data-tab="kurs-builder" role="tab" aria-selected="false" aria-controls="tab-kurs-builder">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+        Kurs-Builder
+        <span class="badge" id="kurs-count" aria-label="Aufgaben im Kurs">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- TAB 1: Bibliothek -->
+    <section id="tab-bibliothek" class="tab-panel" role="tabpanel" aria-labelledby="">
+      <div class="filter-bar">
+        <div class="filter-section">
+          <span class="filter-label">Kategorien:</span>
+          <div class="kategorie-chips" id="kategorie-chips" role="group" aria-label="Kategorien filtern">
+            <!-- Werden von JS gerendert -->
+          </div>
+        </div>
+        <div class="filter-section schwierigkeit-filter">
+          <label for="schwierigkeit-slider" class="filter-label">
+            Schwierigkeit: <strong id="schwierigkeit-wert">1–5</strong>
+          </label>
+          <input type="range" id="schwierigkeit-slider" min="1" max="5" step="1" value="5"
+                 aria-valuemin="1" aria-valuemax="5" aria-valuenow="5">
+          <div class="schwierigkeit-skala">
+            <span>Leicht</span>
+            <span>Schwer</span>
+          </div>
+        </div>
+        <div class="filter-section">
+          <span class="aufgaben-anzahl" id="aufgaben-anzahl">— Aufgaben</span>
+        </div>
+      </div>
+
+      <div class="aufgaben-grid" id="aufgaben-grid" role="list">
+        <!-- Karten werden von JS gerendert -->
+        <div class="loading-indicator" id="loading-indicator">
+          <div class="spinner"></div>
+          <span>Aufgaben werden geladen…</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Kurs-Builder -->
+    <section id="tab-kurs-builder" class="tab-panel" hidden role="tabpanel" aria-labelledby="">
+      <div class="kurs-builder-layout">
+
+        <aside class="kurs-info-panel">
+          <h2 class="panel-title">Kursdetails</h2>
+          <div class="form-group">
+            <label for="kurs-name">Kursname</label>
+            <input type="text" id="kurs-name" placeholder="z.B. Stadtpark-Runde" maxlength="80">
+          </div>
+          <div class="form-group">
+            <label for="kurs-beschreibung">Kurzbeschreibung</label>
+            <textarea id="kurs-beschreibung" placeholder="Beschreibe deinen Cache-Kurs…" rows="4" maxlength="500"></textarea>
+          </div>
+
+          <div class="kurs-stats" id="kurs-stats">
+            <div class="stat-item">
+              <span class="stat-label">Aufgaben</span>
+              <span class="stat-wert" id="stat-anzahl">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Gesamtzeit</span>
+              <span class="stat-wert" id="stat-zeit">0 Min.</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Ø Schwierigkeit</span>
+              <span class="stat-wert" id="stat-schwierigkeit">—</span>
+            </div>
+          </div>
+
+          <div class="kurs-actions">
+            <button class="btn-primary" id="btn-drucken" disabled>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a1 1 0 001 1h8a1 1 0 001-1v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a1 1 0 00-1-1H6a1 1 0 00-1 1zm2 0h6v3H7V4zm-1 9H6v2h8v-2h-1a1 1 0 01-1-1v-1H8v1a1 1 0 01-1 1zm8-5a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/></svg>
+              Kurs drucken / PDF
+            </button>
+            <button class="btn-danger" id="btn-leeren" disabled>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+              Kurs leeren
+            </button>
+          </div>
+        </aside>
+
+        <div class="kurs-liste-container">
+          <h2 class="panel-title">Aufgaben im Kurs</h2>
+          <p class="kurs-leer-hint" id="kurs-leer-hint">
+            Noch keine Aufgaben ausgewählt.<br>
+            Gehe zur <button class="link-btn" data-tab-link="bibliothek">Bibliothek</button> und klicke auf „+ Zum Kurs hinzufügen".
+          </p>
+          <ol class="kurs-liste" id="kurs-liste" aria-label="Aufgaben im Kurs">
+            <!-- Wird von JS gerendert -->
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Nur beim Drucken sichtbar -->
+  <div id="print-view" aria-hidden="true">
+    <!-- Wird von JS vor window.print() befüllt -->
+  </div>
+
+</body>
+</html>

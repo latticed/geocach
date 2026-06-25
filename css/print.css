@@ -1,0 +1,202 @@
+/* ============================================================
+   GeoCachePlaner — Druck-Stylesheet
+   Nur aktiv bei window.print() / Strg+P
+   ============================================================ */
+
+@media print {
+
+  /* Alles ausblenden außer dem Druckbereich */
+  .site-header,
+  main,
+  #tab-bibliothek,
+  #tab-kurs-builder {
+    display: none !important;
+  }
+
+  #print-view {
+    display: block !important;
+  }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    margin: 20mm 22mm;
+    size: A4 portrait;
+  }
+
+  /* Seitenumbrüche */
+  .print-aufgabe {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* === PRINT-LAYOUT === */
+
+  .print-header {
+    border-bottom: 2pt solid #2d5a27;
+    padding-bottom: 10pt;
+    margin-bottom: 14pt;
+  }
+
+  .print-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10pt;
+    margin-bottom: 4pt;
+  }
+
+  .print-logo-text {
+    font-size: 9pt;
+    color: #555;
+  }
+
+  .print-kurs-titel {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2d5a27;
+    margin-bottom: 4pt;
+    line-height: 1.2;
+  }
+
+  .print-kurs-beschreibung {
+    font-size: 10pt;
+    color: #444;
+    margin-bottom: 8pt;
+    line-height: 1.5;
+  }
+
+  .print-meta-row {
+    display: flex;
+    gap: 20pt;
+    font-size: 9pt;
+    color: #666;
+    padding: 6pt 0;
+    border-top: 0.5pt solid #ccc;
+  }
+
+  .print-meta-item strong {
+    color: #333;
+  }
+
+  /* === AUFGABEN === */
+
+  .print-aufgaben-titel {
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 16pt 0 10pt;
+    color: #2d5a27;
+    border-bottom: 1pt solid #aaa;
+    padding-bottom: 4pt;
+  }
+
+  .print-aufgabe {
+    border: 0.75pt solid #bbb;
+    border-radius: 3pt;
+    padding: 9pt 11pt;
+    margin-bottom: 10pt;
+    background: #fff;
+  }
+
+  .print-aufgabe-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8pt;
+    margin-bottom: 5pt;
+  }
+
+  .print-aufgabe-nr {
+    font-size: 9pt;
+    color: #888;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .print-aufgabe-titel {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #111;
+    flex: 1;
+  }
+
+  .print-aufgabe-sterne {
+    font-size: 10pt;
+    white-space: nowrap;
+  }
+
+  .print-kategorie {
+    font-size: 8pt;
+    color: #666;
+    margin-bottom: 5pt;
+    font-style: italic;
+  }
+
+  .print-beschreibung {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #222;
+    margin-bottom: 7pt;
+  }
+
+  .print-hinweis {
+    padding: 5pt 8pt;
+    background: #f4f4f4;
+    border-left: 2.5pt solid #4a7c3f;
+    font-size: 9pt;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 5pt;
+  }
+
+  .print-hinweis strong {
+    color: #2d5a27;
+  }
+
+  .print-beispiel {
+    font-size: 9pt;
+    color: #555;
+    font-style: italic;
+    padding: 4pt 8pt;
+    background: #fdf8ed;
+    border-left: 2.5pt solid #c9a84c;
+    line-height: 1.5;
+  }
+
+  .print-beispiel strong {
+    font-style: normal;
+    color: #7a5c10;
+  }
+
+  /* Koordinaten-Notizfeld */
+  .print-notiz {
+    margin-top: 7pt;
+    border-top: 0.5pt dashed #ccc;
+    padding-top: 5pt;
+    font-size: 8pt;
+    color: #aaa;
+  }
+
+  .print-notiz-linie {
+    border-bottom: 0.5pt solid #ccc;
+    margin: 4pt 0;
+    height: 12pt;
+  }
+
+  /* Footer */
+  .print-footer {
+    margin-top: 20pt;
+    padding-top: 8pt;
+    border-top: 0.75pt solid #999;
+    font-size: 8pt;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+}

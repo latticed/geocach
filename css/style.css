@@ -1,0 +1,833 @@
+/* ============================================================
+   GeoCachePlaner — Haupt-Stylesheet
+   ============================================================ */
+
+/* === DESIGN-TOKENS === */
+:root {
+  --color-primary:     #4a7c3f;
+  --color-primary-dk:  #2d5a27;
+  --color-primary-lt:  #6aab5b;
+  --color-accent:      #c9a84c;
+  --color-accent-lt:   #f0d88a;
+  --color-bg:          #f5f0e8;
+  --color-bg-dark:     #ece5d5;
+  --color-surface:     #ffffff;
+  --color-surface-2:   #f9f5ee;
+  --color-text:        #2c2c2c;
+  --color-text-muted:  #6b6b6b;
+  --color-danger:      #b03a2e;
+  --color-danger-dk:   #8c2e24;
+  --color-border:      #c8bfaa;
+  --color-border-lt:   #e0d8c8;
+  --color-success:     #2e7d32;
+
+  /* Kategorie-Farben */
+  --kat-mathe:      #5b8dd9;
+  --kat-codes:      #9b59b6;
+  --kat-natur:      #27ae60;
+  --kat-stage:      #e67e22;
+  --kat-kreativ:    #e84393;
+  --kat-technik:    #16a085;
+  --kat-geschichte: #c0392b;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.10);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.12);
+  --shadow-hover:0 4px 16px rgba(0,0,0,0.18);
+  --shadow-focus:0 0 0 3px rgba(74,124,63,0.35);
+
+  --transition: 180ms ease;
+
+  --font-body:    'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-heading: Georgia, 'Times New Roman', serif;
+}
+
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(74,124,63,0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.3;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+input, textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  box-shadow: var(--shadow-focus);
+}
+
+/* === HEADER === */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  height: 68px;
+  background: linear-gradient(135deg, var(--color-primary-dk) 0%, var(--color-primary) 100%);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.01em;
+}
+
+/* === TAB NAV === */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.80);
+  background: rgba(255,255,255,0.10);
+  border-bottom: 3px solid transparent;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  position: relative;
+  min-height: 44px;
+}
+
+.tab-btn:hover {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+.tab-btn.active {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  border-bottom-color: var(--color-accent);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: var(--color-accent);
+  color: #2c2c2c;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.badge.bump {
+  transform: scale(1.35);
+}
+
+/* === FILTER BAR === */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  padding: 16px 24px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-lt);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.kategorie-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: var(--radius-xl);
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  transition: all var(--transition);
+  min-height: 32px;
+}
+
+.chip:hover {
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+}
+
+.chip.aktiv {
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Kategorie-spezifische Chip-Farben */
+.chip[data-kat="Mathe & Koordinaten"].aktiv        { background: var(--kat-mathe); }
+.chip[data-kat="Codes & Verschlüsselung"].aktiv    { background: var(--kat-codes); }
+.chip[data-kat="Natur & Umwelt"].aktiv             { background: var(--kat-natur); }
+.chip[data-kat="Multi-Stage"].aktiv                { background: var(--kat-stage); }
+.chip[data-kat="Kreativ & Rätsel"].aktiv           { background: var(--kat-kreativ); }
+.chip[data-kat="Technik"].aktiv                    { background: var(--kat-technik); }
+.chip[data-kat="Geschichte & Kultur"].aktiv        { background: var(--kat-geschichte); }
+
+/* Chip hover mit Farbe */
+.chip[data-kat="Mathe & Koordinaten"]:hover        { border-color: var(--kat-mathe); color: var(--kat-mathe); }
+.chip[data-kat="Codes & Verschlüsselung"]:hover    { border-color: var(--kat-codes); color: var(--kat-codes); }
+.chip[data-kat="Natur & Umwelt"]:hover             { border-color: var(--kat-natur); color: var(--kat-natur); }
+.chip[data-kat="Multi-Stage"]:hover                { border-color: var(--kat-stage); color: var(--kat-stage); }
+.chip[data-kat="Kreativ & Rätsel"]:hover           { border-color: var(--kat-kreativ); color: var(--kat-kreativ); }
+.chip[data-kat="Technik"]:hover                    { border-color: var(--kat-technik); color: var(--kat-technik); }
+.chip[data-kat="Geschichte & Kultur"]:hover        { border-color: var(--kat-geschichte); color: var(--kat-geschichte); }
+
+/* Schwierigkeit Slider */
+.schwierigkeit-filter {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+#schwierigkeit-slider {
+  width: 140px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.schwierigkeit-skala {
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.aufgaben-anzahl {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* === AUFGABEN-GRID === */
+.aufgaben-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 20px;
+  padding: 24px;
+}
+
+/* Loading */
+.loading-indicator {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--color-border-lt);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.keine-ergebnisse {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.keine-ergebnisse p { font-size: 16px; margin-bottom: 8px; }
+.keine-ergebnisse small { font-size: 13px; }
+
+/* === AUFGABEN-KARTE === */
+.aufgabe-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border-left: 5px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.aufgabe-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Kategorie-Farbe am linken Rand */
+.aufgabe-card[data-kat="Mathe & Koordinaten"]     { border-left-color: var(--kat-mathe); }
+.aufgabe-card[data-kat="Codes & Verschlüsselung"] { border-left-color: var(--kat-codes); }
+.aufgabe-card[data-kat="Natur & Umwelt"]          { border-left-color: var(--kat-natur); }
+.aufgabe-card[data-kat="Multi-Stage"]             { border-left-color: var(--kat-stage); }
+.aufgabe-card[data-kat="Kreativ & Rätsel"]        { border-left-color: var(--kat-kreativ); }
+.aufgabe-card[data-kat="Technik"]                 { border-left-color: var(--kat-technik); }
+.aufgabe-card[data-kat="Geschichte & Kultur"]     { border-left-color: var(--kat-geschichte); }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px 8px;
+}
+
+.kategorie-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.aufgabe-card[data-kat="Mathe & Koordinaten"]     .kategorie-badge { background: rgba(91,141,217,0.12); color: var(--kat-mathe); }
+.aufgabe-card[data-kat="Codes & Verschlüsselung"] .kategorie-badge { background: rgba(155,89,182,0.12); color: var(--kat-codes); }
+.aufgabe-card[data-kat="Natur & Umwelt"]          .kategorie-badge { background: rgba(39,174,96,0.12);  color: var(--kat-natur); }
+.aufgabe-card[data-kat="Multi-Stage"]             .kategorie-badge { background: rgba(230,126,34,0.12); color: var(--kat-stage); }
+.aufgabe-card[data-kat="Kreativ & Rätsel"]        .kategorie-badge { background: rgba(232,67,147,0.12); color: var(--kat-kreativ); }
+.aufgabe-card[data-kat="Technik"]                 .kategorie-badge { background: rgba(22,160,133,0.12); color: var(--kat-technik); }
+.aufgabe-card[data-kat="Geschichte & Kultur"]     .kategorie-badge { background: rgba(192,57,43,0.12);  color: var(--kat-geschichte); }
+
+.schwierigkeit-sterne {
+  font-size: 13px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.stern-voll  { color: var(--color-accent); }
+.stern-leer  { color: var(--color-border); }
+
+.card-body {
+  padding: 0 16px 12px;
+  flex: 1;
+}
+
+.card-body h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.card-beschreibung {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--color-border-lt);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.card-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* Details/Hinweis */
+.card-hinweis {
+  margin: 0 12px 10px;
+  border: 1px solid var(--color-border-lt);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card-hinweis summary {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(74,124,63,0.05);
+}
+
+.card-hinweis summary::-webkit-details-marker { display: none; }
+
+.card-hinweis summary::before {
+  content: '▶';
+  font-size: 9px;
+  transition: transform var(--transition);
+}
+
+.card-hinweis[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.card-hinweis summary:hover {
+  background: rgba(74,124,63,0.10);
+}
+
+.hinweis-inhalt {
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+}
+
+.hinweis-inhalt .beispiel {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(201,168,76,0.10);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12px;
+}
+
+/* Kurs-Hinzufügen-Button auf Karte */
+.card-actions {
+  padding: 10px 12px 12px;
+}
+
+.btn-kurs-add {
+  width: 100%;
+  padding: 9px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #fff;
+  transition: background var(--transition), transform var(--transition);
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-kurs-add:hover:not(:disabled) {
+  background: var(--color-primary-dk);
+}
+
+.btn-kurs-add:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-kurs-add.im-kurs {
+  background: var(--color-success);
+  cursor: default;
+}
+
+.btn-kurs-add.im-kurs::before {
+  content: '✓ ';
+}
+
+/* === KURS-BUILDER === */
+#tab-kurs-builder {
+  padding: 24px;
+}
+
+.kurs-builder-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel-title {
+  font-size: 17px;
+  margin-bottom: 16px;
+  color: var(--color-text);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-border-lt);
+}
+
+/* Info-Panel */
+.kurs-info-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  position: sticky;
+  top: 84px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  resize: vertical;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+/* Statistiken */
+.kurs-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-lt);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.stat-wert {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+/* Aktionsbuttons */
+.kurs-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 16px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition);
+  min-height: 44px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dk);
+}
+
+.btn-primary:disabled,
+.btn-danger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--color-danger);
+  border: 1.5px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition);
+  min-height: 44px;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+/* Kurs-Liste */
+.kurs-liste-container {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  min-height: 300px;
+}
+
+.kurs-leer-hint {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 2;
+}
+
+.link-btn {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+.link-btn:hover {
+  color: var(--color-primary-dk);
+}
+
+.kurs-liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kurs-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-lt);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-border);
+  transition: box-shadow var(--transition);
+}
+
+.kurs-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Kategorie-Farbe auf Kurs-Item */
+.kurs-item[data-kat="Mathe & Koordinaten"]     { border-left-color: var(--kat-mathe); }
+.kurs-item[data-kat="Codes & Verschlüsselung"] { border-left-color: var(--kat-codes); }
+.kurs-item[data-kat="Natur & Umwelt"]          { border-left-color: var(--kat-natur); }
+.kurs-item[data-kat="Multi-Stage"]             { border-left-color: var(--kat-stage); }
+.kurs-item[data-kat="Kreativ & Rätsel"]        { border-left-color: var(--kat-kreativ); }
+.kurs-item[data-kat="Technik"]                 { border-left-color: var(--kat-technik); }
+.kurs-item[data-kat="Geschichte & Kultur"]     { border-left-color: var(--kat-geschichte); }
+
+.kurs-item-nr {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  min-width: 22px;
+  text-align: center;
+}
+
+.kurs-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.kurs-item-titel {
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kurs-item-meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.kurs-item-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-lt);
+  transition: all var(--transition);
+}
+
+.btn-icon:hover:not(:disabled) {
+  color: var(--color-text);
+  background: var(--color-bg-dark);
+  border-color: var(--color-border);
+}
+
+.btn-icon:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.btn-icon.remove:hover {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+  background: rgba(176,58,46,0.07);
+}
+
+/* Print-View (screen: versteckt) */
+#print-view {
+  display: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .kurs-builder-layout {
+    grid-template-columns: 1fr;
+  }
+  .kurs-info-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 0 12px;
+    height: auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+  }
+  .logo-sub { display: none; }
+  .logo-title { font-size: 17px; }
+  .logo-icon { width: 32px; height: 32px; }
+  .tab-btn { padding: 6px 12px; font-size: 13px; }
+
+  .filter-bar { padding: 12px 16px; gap: 12px 16px; }
+  .aufgaben-grid { padding: 12px; gap: 14px; }
+  #tab-kurs-builder { padding: 12px; }
+
+  .aufgaben-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .tab-btn span:not(.badge) { display: none; }
+}
