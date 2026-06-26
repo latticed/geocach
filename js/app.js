@@ -48,22 +48,29 @@ function escapeHtml(str) {
 // === DATEN LADEN ===
 
 async function loadAufgaben() {
+  // 1. Eingebettete Daten bevorzugen (js/aufgaben-data.js).
+  //    Dadurch funktioniert die Seite auch per Doppelklick (file://),
+  //    wo Browser fetch() blockieren.
+  if (window.AUFGABEN_DATA && Array.isArray(window.AUFGABEN_DATA.aufgaben)) {
+    state.aufgaben = window.AUFGABEN_DATA.aufgaben;
+    return true;
+  }
+
+  // 2. Fallback: über HTTP-Server geladene JSON-Datei.
   try {
     const res = await fetch('data/aufgaben.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     state.aufgaben = data.aufgaben || [];
   } catch (err) {
-    console.warn('fetch() fehlgeschlagen, nutze eingebettete Daten:', err.message);
-    // Beim Scheitern: Seite neu laden ohne fetch ist nicht möglich
-    // Zeige Fehlermeldung
+    console.warn('Daten konnten nicht geladen werden:', err.message);
     const grid = document.getElementById('aufgaben-grid');
     grid.innerHTML = `
       <div class="keine-ergebnisse">
         <p>Aufgaben konnten nicht geladen werden.</p>
-        <small>Bitte öffne die Seite über einen lokalen Webserver:<br>
-        <code>python3 -m http.server 8080</code><br>
-        oder deploye sie auf GitHub Pages.</small>
+        <small>Stelle sicher, dass die Datei <code>js/aufgaben-data.js</code> vorhanden ist,<br>
+        oder öffne die Seite über einen lokalen Webserver:<br>
+        <code>python3 -m http.server 8080</code></small>
       </div>`;
     return false;
   }

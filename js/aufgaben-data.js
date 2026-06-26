@@ -1,0 +1,337 @@
+// Eingebettete Aufgaben-Daten — automatisch aus data/aufgaben.json generiert.
+// Ermoeglicht, dass die Seite per Doppelklick auf index.html (file://) funktioniert,
+// da Browser fetch() unter file:// blockieren, <script>-Tags aber erlauben.
+window.AUFGABEN_DATA = {
+  "aufgaben": [
+    {
+      "id": "m01",
+      "titel": "Koordinaten-Arithmetik",
+      "beschreibung": "Teile die Koordinaten in ihre einzelnen Ziffern auf und führe einfache Rechenoperationen durch. Zum Beispiel: Addiere bestimmte Stellen, multipliziere sie oder bilde die Quersumme. Das Ergebnis ergibt die fehlenden Koordinaten des Finals.",
+      "kategorie": "Mathe & Koordinaten",
+      "schwierigkeit": 2,
+      "zeitaufwand": 10,
+      "hinweis": "Koordinaten in Grad und Minuten aufteilen und Rechenoperationen einzeln pro Stelle definieren. Immer prüfen, ob das Ergebnis in einem realistischen Koordinatenbereich liegt.",
+      "beispiel": "N 48° (A+B).(C×D) E 009° (E-F).(G+H) — wobei A–H Ziffern aus einem Rätsel sind."
+    },
+    {
+      "id": "m02",
+      "titel": "Primzahlen-Koordinaten",
+      "beschreibung": "Finde die N-te Primzahl, um Ziffern in die Koordinaten einzusetzen. Die Cache-Beschreibung gibt an, welche Position in der Primzahlenfolge benötigt wird. Das stärkt mathematisches Denken ohne große Vorkenntnisse.",
+      "kategorie": "Mathe & Koordinaten",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "Primzahltabellen nicht direkt im Listing angeben — das Nachschlagen ist Teil des Rätsels. Prüfe, ob die gesuchte Primzahl nicht zu groß wird (max. 2–3 Stellen).",
+      "beispiel": "A = die 7. Primzahl (= 17), B = die 4. Primzahl (= 7). Final: N 48° A.B..."
+    },
+    {
+      "id": "m03",
+      "titel": "Magisches Quadrat",
+      "beschreibung": "Fülle ein 3×3-Gitter mit den Zahlen 1–9 so aus, dass jede Zeile, Spalte und Diagonale die gleiche Summe ergibt. Bestimmte Felder sind bereits vorgegeben. Die Summe oder einzelne Felder codieren die Koordinaten.",
+      "kategorie": "Mathe & Koordinaten",
+      "schwierigkeit": 5,
+      "zeitaufwand": 35,
+      "hinweis": "Die magische Summe eines 3×3-Quadrats mit 1–9 ist immer 15. Drehe oder spiegle die Vorgabe, damit es nicht direkt gegoogelt werden kann. Das Feld in der Mitte ist immer 5.",
+      "beispiel": "Das vollständig ausgefüllte Quadrat ergibt in der ersten Zeile: 2, 9, 4 → A=2, B=9, C=4."
+    },
+    {
+      "id": "m04",
+      "titel": "Fibonacci-Folge",
+      "beschreibung": "Nutze bestimmte Glieder der Fibonacci-Folge (1, 1, 2, 3, 5, 8, 13, 21, 34, 55 …) als Ziffern für die Finalkoordinaten. Die Cache-Beschreibung gibt an, welches Glied gesucht wird.",
+      "kategorie": "Mathe & Koordinaten",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Nur einstellige Glieder (1–8) eignen sich direkt als Koordinaten-Ziffern. Zweistellige Glieder können als zwei separate Ziffern verwendet werden (z.B. 13 → A=1, B=3).",
+      "beispiel": "A = 6. Fibonacci-Zahl = 8, B = 8. Fibonacci-Zahl = 21 → B1=2, B2=1."
+    },
+    {
+      "id": "m05",
+      "titel": "Geometrisches Rätsel",
+      "beschreibung": "Berechne Winkel, Flächeninhalte oder Seiten einer geometrischen Figur anhand gegebener Maße. Die Ergebnisse werden als Ziffern in die Koordinaten eingesetzt. Einfache Formeln für Dreiecke oder Kreise eignen sich gut.",
+      "kategorie": "Mathe & Koordinaten",
+      "schwierigkeit": 4,
+      "zeitaufwand": 25,
+      "hinweis": "Die Figur maßstabsgetreu skizzieren und deutlich beschriften. Ganzzahlige Ergebnisse durch passend gewählte Maße sicherstellen. Auf Winkelberechnung in Grad (nicht Bogenmaß) hinweisen.",
+      "beispiel": "Dreieck mit a=6, b=8, c=10 → Fläche = 24 → A=2, B=4."
+    },
+    {
+      "id": "c01",
+      "titel": "Caesar-Chiffre",
+      "beschreibung": "Ein Text wurde um N Positionen im Alphabet verschoben. Durch Zurückverschieben ergibt sich ein Wort oder eine Zahl, die in die Koordinaten einfließt. Eine der bekanntesten und einsteigerfreundlichsten Verschlüsselungen.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 1,
+      "zeitaufwand": 10,
+      "hinweis": "ROT13 (N=13) ist ein Spezialfall und sehr bekannt — lieber eine andere Verschiebung wählen. Das verschlüsselte Wort sollte ohne Verschiebung keinen Sinn ergeben.",
+      "beispiel": "Verschlüsselter Text mit N=3: 'ILQDO' → entschlüsselt: 'FINAL'. Zähle Buchstaben: F=6, I=9 → Koordinaten-Ziffern."
+    },
+    {
+      "id": "c02",
+      "titel": "Morsecode",
+      "beschreibung": "Dekodiere eine Sequenz aus Punkten und Strichen nach dem internationalen Morsealphabet. Das Ergebnis ist ein Wort oder eine Zahl, die als Koordinaten-Ziffern dient. Morsecode kann gut auf physischen Caches eingraviert werden.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Buchstaben durch '/' und Wörter durch '//' trennen. Kurze Sequenzen wählen (max. 6–8 Zeichen). Auf Magnetstreifen oder Metall eingravierter Morsecode ist sehr wetterfest.",
+      "beispiel": ".-. .- - / -- .--- → RAT MJ → R=18, A=1, T=20 → kürze auf letzte Ziffer: A=8, B=1, C=0."
+    },
+    {
+      "id": "c03",
+      "titel": "Binärcode",
+      "beschreibung": "Wandle Binärzahlen (aus Nullen und Einsen) in Dezimalzahlen um. Jede Binärzahl ergibt eine Ziffer der Koordinaten. Mit 4-Bit-Blöcken erhält man Zahlen von 0–15, mit 3-Bit-Blöcken von 0–7.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "4-Bit-Blöcke (0000–1001) für Ziffern 0–9 eignen sich am besten. Blöcke deutlich durch Leerzeichen trennen. Visuell auch als schwarze/weiße Quadrate oder Punkte/Kreise darstellbar.",
+      "beispiel": "0101 0011 1000 → 5, 3, 8 → Koordinaten-Ziffern A=5, B=3, C=8."
+    },
+    {
+      "id": "c04",
+      "titel": "Vigenère-Verschlüsselung",
+      "beschreibung": "Ein Text wird mit einem Schlüsselwort ver- und entschlüsselt. Das Schlüsselwort ist am Cache-Ort versteckt (z.B. als Beschriftung, Gravur oder im Logbuch). Diese anspruchsvolle Methode kombiniert physische Suche mit Dekodierung.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 5,
+      "zeitaufwand": 30,
+      "hinweis": "Das Schlüsselwort gut am Ort verstecken — aber nicht zu schwer zu finden. Ein Vigenère-Quadrat in der Beschreibung oder als Beilage erleichtert die Dekodierung. Schlüsselwort max. 5 Buchstaben.",
+      "beispiel": "Chiffretext: 'WMCZV', Schlüsselwort: 'WALD' → entschlüsselt: 'FINAL'."
+    },
+    {
+      "id": "c05",
+      "titel": "Semaphore-Signale",
+      "beschreibung": "Winkerpositions-Signale (Flaggensemaphor) stellen Buchstaben durch Armhaltungen dar. Eine illustrierte Tabelle oder Zeichnung gibt die Signale vor. Die entschlüsselten Buchstaben oder Zahlen ergeben die Koordinaten.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 4,
+      "zeitaufwand": 25,
+      "hinweis": "Eine übersichtliche Illustrationstabelle aller 26 Buchstaben-Positionen beilegen. Nur 3–5 Zeichen verschlüsseln, sonst wird es unübersichtlich. Die Bilder können handgezeichnet oder digital erstellt werden.",
+      "beispiel": "Drei Semaphore-Positionen → G, P, S → G=7, P=6, S=9 → Koordinaten-Ziffern."
+    },
+    {
+      "id": "c06",
+      "titel": "Polybius-Quadrat",
+      "beschreibung": "In einem 5×5-Gitter sind die Buchstaben A–Z (I und J teilen ein Feld) angeordnet. Jeder Buchstabe wird durch Zeile und Spalte (je 1–5) codiert. Paare von Zahlen werden Buchstaben zugeordnet, die Ziffern ergeben.",
+      "kategorie": "Codes & Verschlüsselung",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "Das klassische 5×5-Gitter enthält I und J im selben Feld. Eine eigene Reihenfolge der Buchstaben (Schlüssel-Alphabet) macht die Aufgabe schwerer. Das Gitter im Listing abbilden.",
+      "beispiel": "Koordinate 31, 15, 43 → Buchstaben C, E, N → C=3, E=5, N=2 → Ziffern."
+    },
+    {
+      "id": "n01",
+      "titel": "Baumbestimmung",
+      "beschreibung": "Anhand der Beschreibung von Blatt, Rinde, Frucht oder Wuchsform soll eine Baumart bestimmt werden. Die Anzahl der Buchstaben im deutschen Artnamen oder eine zugewiesene Nummer ergibt die Koordinaten-Ziffern.",
+      "kategorie": "Natur & Umwelt",
+      "schwierigkeit": 2,
+      "zeitaufwand": 20,
+      "hinweis": "Nur häufige heimische Arten verwenden (z.B. Eiche, Buche, Birke). Bestimmungsmerkmale eindeutig beschreiben. Saisonale Merkmale (Blüten, Laub) nur verwenden, wenn der Cache ganzjährig aktiv ist.",
+      "beispiel": "Baum mit gelappten Blättern, brauner Borke und Eicheln → Stieleiche (9 Buchstaben) → A=9."
+    },
+    {
+      "id": "n02",
+      "titel": "Jahresringe zählen",
+      "beschreibung": "Ein Foto oder Scan eines Baumstumpf-Querschnitts liegt bei. Die Jahresringe werden gezählt, um das Alter des Baumes (= Koordinaten-Ziffer) zu bestimmen. Einfach, visuell und für alle Altersgruppen geeignet.",
+      "kategorie": "Natur & Umwelt",
+      "schwierigkeit": 1,
+      "zeitaufwand": 10,
+      "hinweis": "Ein hochauflösendes, gut belichtetes Foto eines echten Baumstumpfs verwenden. Anzahl der sichtbaren Ringe auf 15–30 begrenzen, damit es eindeutig zählbar bleibt. Skala oder Münze als Maßstab mitilfegen.",
+      "beispiel": "Baumstumpf-Foto zeigt 23 Jahresringe → A=2, B=3."
+    },
+    {
+      "id": "n03",
+      "titel": "Vogelstimmen-Quiz",
+      "beschreibung": "Phonetische Beschreibungen oder Lautschrift bekannter Vogelstimmen müssen der richtigen Vogelart zugeordnet werden. Die Nummer der Art in einer alphabetischen Liste oder die Buchstabenanzahl des Artnamens ergibt Koordinaten-Ziffern.",
+      "kategorie": "Natur & Umwelt",
+      "schwierigkeit": 3,
+      "zeitaufwand": 15,
+      "hinweis": "Nur heimische Allerweltsarten verwenden (Amsel, Kuckuck, Nachtigall). Phonetische Beschreibungen klar formulieren. Alternativ QR-Code mit Audio-Link auf die Cache-Dose kleben — Cacher hört die Stimme vor Ort.",
+      "beispiel": "Ruf: 'Kuh-kuck' → Kuckuck (7 Buchstaben) → A=7. Alphabetische Liste: Kuckuck = Nr. 5 → B=5."
+    },
+    {
+      "id": "n04",
+      "titel": "Pflanzenfamilien zuordnen",
+      "beschreibung": "Fünf Pflanzen müssen ihrer Pflanzenfamilie zugeordnet werden. Die Anzahl der richtig zugeordneten Paare oder ein Punktesystem ergibt die Koordinaten-Ziffern. Fördert botanisches Grundwissen auf spielerische Weise.",
+      "kategorie": "Natur & Umwelt",
+      "schwierigkeit": 4,
+      "zeitaufwand": 25,
+      "hinweis": "Nur eindeutige, bekannte Paare verwenden (Rose → Rosengewächse, Tomate → Nachtschattengewächse). Botanische Namen auf Deutsch angeben. Eine Lösungstabelle im Listing erleichtert die Eingabe.",
+      "beispiel": "Löwenzahn → Korbblütler (richtig = 1 Punkt). 4 von 5 richtig → A=4."
+    },
+    {
+      "id": "n05",
+      "titel": "Beaufort-Windskala",
+      "beschreibung": "Fragen zur internationalen Beaufort-Windskala (0 = Windstille bis 12 = Orkan) müssen beantwortet werden. Stärken und ihre Merkmale (z.B. 'Blätter rascheln leicht' = Windstärke ?) ergeben Koordinaten-Ziffern.",
+      "kategorie": "Natur & Umwelt",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Die Beaufort-Skala beginnt bei 0 und endet bei 12 — ideal für zweistellige Koordinaten-Anteile. Beschreibungen der Windstärken sind im Internet frei verfügbar. Nur Stärken 0–9 für einstellige Ziffern nutzen.",
+      "beispiel": "'Zweige in Bewegung, Regenschirm schwer zu halten' → Windstärke 6 → A=6."
+    },
+    {
+      "id": "s01",
+      "titel": "Klassische Zwei-Stage",
+      "beschreibung": "Stage 1 enthält versteckte Informationen (z.B. eingravierte Ziffern, eine beschriftete Dose), die die Koordinaten von Stage 2 (dem Final) ergeben. Der einfachste Multi-Cache-Aufbau — gut für Einsteiger geeignet.",
+      "kategorie": "Multi-Stage",
+      "schwierigkeit": 2,
+      "zeitaufwand": 30,
+      "hinweis": "Koordinaten gut lesbar anbringen — graviert auf Metall oder auf wetterfestem Material. Stage 1 sollte attraktiv und gut versteckt sein, damit sich der Umweg lohnt. Abstand zwischen Stages: 200–800 m.",
+      "beispiel": "Stage 1 (Parkbank): Gravierte Zahl '482' unter der Sitzfläche → Final: N 48° 2X.XXX."
+    },
+    {
+      "id": "s02",
+      "titel": "Rätsel-Kette",
+      "beschreibung": "Jede Stage enthält ein kleines Rätsel. Die Lösung ergibt die Koordinaten der nächsten Stage. Die letzte Lösung führt zum Final. Die Schwierigkeit steigt mit der Anzahl der Stages und der Rätselkomplexität.",
+      "kategorie": "Multi-Stage",
+      "schwierigkeit": 4,
+      "zeitaufwand": 60,
+      "hinweis": "Zwischen den Stages maximal 500 m Fußweg einplanen. Jede Stage auf Langlebigkeit prüfen (wetterfest, schwer zu muggeln). Einen 'Not-Hint' für Cacher bereitstellen, die bei einer Stage nicht weiterkommen.",
+      "beispiel": "Stage 1 → Morsecode auf Schild → Stage 2. Stage 2 → Baumringzählung → Stage 3. Stage 3 = Final."
+    },
+    {
+      "id": "s03",
+      "titel": "Fotopunkt-Stage",
+      "beschreibung": "Ein Foto eines markanten Ortes liegt bei. Der Cacher muss den exakten Standpunkt finden, von dem das Foto aufgenommen wurde. Dort befindet sich ein Objekt mit weiterführenden Informationen. Erfordert Orientierungsvermögen.",
+      "kategorie": "Multi-Stage",
+      "schwierigkeit": 2,
+      "zeitaufwand": 20,
+      "hinweis": "Markantes, langlebiges Motiv wählen (Denkmal, Gebäude, Brücke) — kein saisonales Laub. Auf dem Foto Details zeigen, die eine eindeutige Ortung ermöglichen. Das versteckte Objekt muss vom Fotopunkt sichtbar sein.",
+      "beispiel": "Foto zeigt Brunnen mit Kirche im Hintergrund → Standpunkt = Brücke nordöstlich → dort Magnetdose."
+    },
+    {
+      "id": "s04",
+      "titel": "Virtuelle Stage mit Info-Tafel",
+      "beschreibung": "Eine öffentliche Informationstafel, ein Denkmal oder eine Gedenktafel enthält Zahlen oder Buchstaben, die als Koordinaten-Ziffern dienen. Der Cacher muss die Tafel finden und die richtigen Angaben herauslesen.",
+      "kategorie": "Multi-Stage",
+      "schwierigkeit": 1,
+      "zeitaufwand": 15,
+      "hinweis": "Nur permanent angebrachte Tafeln verwenden — kein saisonaler Schmuck. Prüfen, ob die Tafel in Zukunft verändert oder entfernt werden könnte. Die genaue Stelle der gesuchten Zahl eindeutig beschreiben.",
+      "beispiel": "Hinweisschild 'Erbaut im Jahr 1887' → A=1, B=8, C=8, D=7."
+    },
+    {
+      "id": "k01",
+      "titel": "Anagramm-Rätsel",
+      "beschreibung": "Buchstaben eines oder mehrerer Wörter werden durcheinandergewürfelt. Durch Umsortieren entsteht ein neues deutsches Wort. Die Anzahl bestimmter Buchstaben im Lösungswort oder dessen Länge ergibt die Koordinaten-Ziffern.",
+      "kategorie": "Kreativ & Rätsel",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Nur gebräuchliche deutsche Wörter verwenden. Das Anagramm sollte nur eine eindeutige Lösung haben. Online-Anagramm-Löser testen, ob das Rätsel unbeabsichtigt mehrere Lösungen hat.",
+      "beispiel": "LIENB → BELIN → BERLIN (6 Buchstaben) → A=6. Buchstabe 'E' kommt 1× vor → B=1."
+    },
+    {
+      "id": "k02",
+      "titel": "Bilderrätsel / Rebus",
+      "beschreibung": "Bilder stehen für Silben oder Wörter. Zusammengesetzt ergeben sie ein deutsches Wort (Kompositum). Die Länge des Wortes, ein bestimmter Buchstabe oder eine enthaltene Zahl ergibt die Koordinaten-Ziffern.",
+      "kategorie": "Kreativ & Rätsel",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "Bilder eindeutig wählen — kein Spielraum für mehrere Interpretationen. Clipart oder einfache handgezeichnete Skizzen reichen völlig aus. Deutsch-typische Komposita (Sonnenblume, Waldweg) eignen sich gut.",
+      "beispiel": "[Bild: Sonne] + [Bild: Blume] → SONNENBLUME (11 Buchstaben) → A=1, B=1."
+    },
+    {
+      "id": "k03",
+      "titel": "Mini-Kreuzworträtsel",
+      "beschreibung": "Ein kleines Kreuzworträtsel (5×5 bis 8×8 Felder) mit deutschen Begriffen. Bestimmte farblich markierte Felder ergeben, in der richtigen Reihenfolge gelesen, die Koordinaten-Ziffern oder ein Lösungswort.",
+      "kategorie": "Kreativ & Rätsel",
+      "schwierigkeit": 3,
+      "zeitaufwand": 25,
+      "hinweis": "Markierte Felder farblich hervorheben oder nummerieren. Begriffe zum Geocaching-Thema wählen (Cache, Logbuch, Final, Muggle). Das Rätsel vor Veröffentlichung von Dritten lösen lassen.",
+      "beispiel": "Markierte Felder (Reihe 1, Spalte 3; Reihe 2, Spalte 5) ergeben: 4, 8 → A=4, B=8."
+    },
+    {
+      "id": "k04",
+      "titel": "Buchstaben-Suchrätsel",
+      "beschreibung": "In einem Buchstabengitter sind mehrere Wörter versteckt (waagrecht, senkrecht oder diagonal). Die Buchstaben, die nach dem Finden aller Wörter übrig bleiben, ergeben — von links nach rechts gelesen — die Koordinaten-Ziffern.",
+      "kategorie": "Kreativ & Rätsel",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Gitter nicht zu groß (max. 10×10). Verbleibende Buchstaben so anordnen, dass sie sinnvoll Ziffern (in Worten) ergeben. Mit einem Grid-Generator arbeiten, damit das Rätsel stimmig ist.",
+      "beispiel": "Verbleibende Buchstaben: Z-W-E-I-V-I-E-R → ZWEI VIER → A=2, B=4."
+    },
+    {
+      "id": "k05",
+      "titel": "Logik-Puzzle (Einstein-Rätsel)",
+      "beschreibung": "Fünf Personen, Objekte oder Orte mit verschiedenen Eigenschaften müssen anhand von 4–6 Hinweisen eindeutig zugeordnet werden. Die richtige Lösung ergibt eine Zahl oder einen Code für die Koordinaten.",
+      "kategorie": "Kreativ & Rätsel",
+      "schwierigkeit": 5,
+      "zeitaufwand": 40,
+      "hinweis": "Eine Lösungstabelle (Matrix) zum Ausfüllen beilegen — ohne diese ist das Puzzle kaum lösbar. Maximal 4×4 Felder für moderate Schwierigkeit. Das Puzzle muss genau eine eindeutige Lösung haben.",
+      "beispiel": "Wer wohnt im roten Haus? → Antwort: Max. Position von Max = 3 → A=3."
+    },
+    {
+      "id": "t01",
+      "titel": "QR-Code scannen",
+      "beschreibung": "An der Cache-Dose oder einem Waypoint befindet sich ein QR-Code. Das Scannen mit einem Smartphone liefert die nächsten Koordinaten, einen Hinweis oder ein Codewort. Einsteigerfreundlich und technisch unkompliziert.",
+      "kategorie": "Technik",
+      "schwierigkeit": 1,
+      "zeitaufwand": 5,
+      "hinweis": "QR-Codes in wetterfester Folie einschweißen oder auf Metall gravieren lassen. Immer auf eine eigene Webseite oder einen URL-Shortener verlinken — nie direkt auf externe Dienste, die sich ändern können.",
+      "beispiel": "QR-Code an Dose → 'https://example.com/cache/xyz' → Seite zeigt: Final: N 48° 12.345."
+    },
+    {
+      "id": "t02",
+      "titel": "NFC-Tag auslesen",
+      "beschreibung": "Ein NFC-Chip (Near Field Communication) ist in die Cache-Dose oder ein Objekt eingebettet. Beim Heranhalten eines Smartphones werden Koordinaten oder ein Code übertragen. Unsichtbar und sehr elegant umsetzbar.",
+      "kategorie": "Technik",
+      "schwierigkeit": 2,
+      "zeitaufwand": 10,
+      "hinweis": "NFC-Tags sind günstig und können in Epoxidharz eingebettet werden (wetterfest). Darauf hinweisen, dass NFC am Smartphone aktiviert sein muss. NDEF-Format für maximale Kompatibilität verwenden.",
+      "beispiel": "Metall-Stein-Attrappe mit NFC-Tag → Tippen mit Handy → URL öffnet sich mit Final-Koordinaten."
+    },
+    {
+      "id": "t03",
+      "titel": "UV-Farben-Rätsel",
+      "beschreibung": "Ein Text oder eine Zahl ist mit UV-reaktiver Tinte auf einem Objekt geschrieben — unsichtbar bei Tageslicht, sichtbar unter UV-Licht (Schwarzlicht). Der Inhalt ergibt die Koordinaten-Ziffern oder ein Lösungswort.",
+      "kategorie": "Technik",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "In der Cache-Beschreibung deutlich darauf hinweisen, dass eine UV-Taschenlampe (Schwarzlicht) benötigt wird. UV-Stifte für Papier und Kunststoff im Fachhandel erhältlich. Bei Sonnenlicht können schwache UV-Strahlen die Schrift sichtbar machen.",
+      "beispiel": "Unter UV-Licht lesbar: '4815' → A=4, B=8, C=1, D=5 → Finalkoordinaten."
+    },
+    {
+      "id": "g01",
+      "titel": "Historisches Datum",
+      "beschreibung": "Eine Recherche über ein lokales historisches Ereignis ist notwendig. Das Gründungsjahr eines Gebäudes, das Datum einer Stadtgründung oder ein markantes Jahr ergibt Koordinaten-Ziffern. Verbindet Geocaching mit lokaler Geschichte.",
+      "kategorie": "Geschichte & Kultur",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Eine Wikipedia-Quelle oder einen lokalen Heimatkundeverein als Recherchequelle angeben. Die gesuchte Jahreszahl sollte nicht zu bekannt sein (nicht 1945 oder 2000). Mehrstellige Jahreszahlen als Ziffern-Folge verwenden.",
+      "beispiel": "Stadtgründung Musterstadt: 1263 → A=1, B=2, C=6, D=3."
+    },
+    {
+      "id": "g02",
+      "titel": "Denkmal-Recherche",
+      "beschreibung": "An einem Denkmal, einer Gedenktafel oder einem historischen Ort ist eine bestimmte Zahl oder ein Name zu finden. Der Cacher muss vor Ort die richtige Information herauslesen und für die Koordinatenberechnung nutzen.",
+      "kategorie": "Geschichte & Kultur",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "Nur permanent angebrachte Tafeln verwenden. Die gesuchte Information eindeutig beschreiben (z.B. 'die 4-stellige Jahreszahl auf der rechten Seite der Tafel'). Saisonalen Schmuck oder temporäre Objekte vermeiden.",
+      "beispiel": "Kriegerdenkmal: Inschrift '1914–1918' → Zähle Gefallene auf Tafel: 47 → A=4, B=7."
+    },
+    {
+      "id": "g03",
+      "titel": "Straßennamen-Rätsel",
+      "beschreibung": "Die Buchstanzahl eines historischen Straßennamens, der am Cache-Ort sichtbar ist, wird als Koordinaten-Ziffer verwendet. Kombiniert physische Ortskenntnisse mit historischem Bezug. Einfach und ortsspezifisch.",
+      "kategorie": "Geschichte & Kultur",
+      "schwierigkeit": 2,
+      "zeitaufwand": 10,
+      "hinweis": "Nur das Straßenschild am Ort selbst als Quelle verwenden, nicht Online-Karten — das macht es ortsspezifisch. Leerzeichen und Bindestriche nicht mitzählen. Bei Straßen mit Umlauten (ä, ö, ü) Regel festlegen.",
+      "beispiel": "Am Cache befindet sich das Schild 'Hauptstraße' (11 Buchstaben) → A=1, B=1."
+    },
+    {
+      "id": "g04",
+      "titel": "Wappenkunde",
+      "beschreibung": "Das Wappen einer Gemeinde, Burg oder Institution enthält heraldische Figuren und Farben. Jeder Farbe ist eine Zahl zugeordnet (Gold=1, Silber=2, Blau=3, Rot=4, Schwarz=5). Die Farbfolge im Wappen ergibt die Koordinaten.",
+      "kategorie": "Geschichte & Kultur",
+      "schwierigkeit": 4,
+      "zeitaufwand": 30,
+      "hinweis": "Heraldische Farbbeschreibungen: Gold/Gelb=1, Silber/Weiß=2, Blau/Azur=3, Rot=4, Schwarz/Sable=5, Grün=6. Das Wappen als klares Bild in der Cache-Beschreibung zeigen. Wappenbeschreibung (Blasonierung) beilegen.",
+      "beispiel": "Wappen: Blau-Rot-Gold von links nach rechts → A=3, B=4, C=1."
+    },
+    {
+      "id": "g05",
+      "titel": "Kulturgeschichtliches Quiz",
+      "beschreibung": "Fünf Fragen zur lokalen Kultur, Geschichte oder Geografie müssen beantwortet werden. Jede richtige Antwort gibt eine Zahl oder einen Buchstaben. Die Summe der Antworten oder einzelne Werte ergeben die Koordinaten-Ziffern.",
+      "kategorie": "Geschichte & Kultur",
+      "schwierigkeit": 3,
+      "zeitaufwand": 25,
+      "hinweis": "Antworten auf alle Fragen mit verlinkter Quelle (Wikipedia, Stadtarchiv) bereitstellen — aber erst nach dem Hint-System oder im Spoiler-Bereich. Nur faktisch eindeutige Fragen verwenden (keine Interpretationsfragen).",
+      "beispiel": "Frage: 'In welchem Jahrhundert wurde die Stadtmauer gebaut?' → Antwort: 13 → A=1, B=3."
+    }
+  ]
+};
