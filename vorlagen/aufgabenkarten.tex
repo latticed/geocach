@@ -1,0 +1,181 @@
+% ============================================================
+%  GeoCachePlaner — Aufgabenblatt / Vordruck
+%  Aufgabenkarten zum Ausschneiden, Anpassen und Einkleben
+%
+%  Bauen:
+%     node vorlagen/build-aufgaben-tex.js   % Daten aus JSON erzeugen
+%     pdflatex -output-directory=vorlagen vorlagen/aufgabenkarten.tex
+%
+%  (build.sh im selben Ordner erledigt beide Schritte auf einmal.)
+% ============================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=14mm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{pifont}      % Scheren-Symbol \ding{34}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+
+% --- Farbwelt (an die Website angelehnt) -------------------
+\definecolor{gcgruen}{HTML}{2D5A27}
+\definecolor{gchell}{HTML}{4A7C3F}
+\definecolor{gcgold}{HTML}{C9A84C}
+\definecolor{gcgrau}{HTML}{666666}
+
+% --- Schwierigkeit als Punkte (n von 5) -------------------
+\newcommand{\schwierigkeit}[1]{%
+  \foreach \i in {1,...,5}{%
+    \ifnum\i>#1\textcolor{gcgrau!45}{\ding{108}}\else\textcolor{gcgold}{\ding{108}}\fi
+  }%
+}
+
+% --- Schnittlinie mit Scheren-Symbol ----------------------
+\newcommand{\schnittlinie}{%
+  \par\nointerlineskip\vspace{2mm}%
+  \makebox[\linewidth]{%
+    \textcolor{gcgrau}{\ding{34}}\hspace{2pt}%
+    \textcolor{gcgrau}{\dotfill}%
+  }%
+  \vspace{2mm}\par\nointerlineskip
+}
+
+% --- Stil einer ausschneidbaren Karte ---------------------
+% gestrichelter Rahmen = Schnittkante, untere Lasche = Klebefläche
+\tcbset{
+  schnittkarte/.style={
+    enhanced, breakable=false,
+    sharp corners, frame hidden,
+    colback=white, colbacklower=gcgrau!10,
+    boxrule=0pt, leftrule=0pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    borderline={0.5pt}{0pt}{gcgrau!70, dash pattern=on 3.5pt off 2pt},
+    left=4mm, right=4mm, top=3mm, bottom=2mm,
+    boxsep=1mm,
+    fonttitle=\bfseries,
+    segmentation style={solid, gcgrau!45, line width=0.4pt, dash pattern=on 1pt off 1.5pt},
+    overlay={%
+      \node[anchor=north west, inner sep=0pt, text=gcgrau]
+        at ([xshift=1mm,yshift=2.6mm]frame.north west) {\footnotesize\ding{34}};
+    },
+  }
+}
+
+% --- Eine gefüllte Aufgabenkarte --------------------------
+% #1 Nr  #2 Titel  #3 Kategorie  #4 Schwierigkeit  #5 Zeit
+% #6 Beschreibung  #7 Hinweis (Designer)  #8 Beispiel (Designer)
+\newcommand{\aufgabenkarte}[8]{%
+  \begin{tcolorbox}[schnittkarte]
+    {\footnotesize\textcolor{gcgrau}{\textbf{#1}}\hfill #4\quad
+      \textcolor{gcgrau}{\ding{45}\,#5\,min}}\\[1.5mm]
+    {\large\bfseries\textcolor{gcgruen}{#2}}\\[0.5mm]
+    {\footnotesize\itshape\textcolor{gchell}{#3}}\par\vspace{1.5mm}
+    {\small #6\par}
+    \vspace{1mm}
+    {\footnotesize\textcolor{gcgruen}{\textbf{Tipp:}} \textcolor{gcgrau}{#7}\par}
+    \vspace{0.5mm}
+    {\footnotesize\textcolor{gcgold!75!black}{\textbf{Beispiel:}} \textit{#8}\par}
+    \vspace{2mm}
+    {\footnotesize\textcolor{gcgrau}{Eigene Lösung / Final-Koordinaten:}}\\[1mm]
+    \rule{0.96\linewidth}{0.3pt}\\[3mm]
+    \tcblower
+    \centering\footnotesize\textcolor{gcgrau}{%
+      \ding{229}\, \textbf{Klebefläche} – hier in den Kurs einkleben \,\ding{228}}
+  \end{tcolorbox}%
+  \vspace{2mm}
+}
+
+% --- Leere Karte (Vordruck, von Hand ausfüllen) -----------
+\newcommand{\vordruckzeile}[1]{%
+  {\footnotesize\textcolor{gcgrau}{#1}}\\[1mm]%
+}
+\newcommand{\linieleer}{\rule{0.96\linewidth}{0.3pt}\\[3mm]}
+
+\newcommand{\aufgabenkarteleer}{%
+  \begin{tcolorbox}[schnittkarte]
+    {\footnotesize\textcolor{gcgrau}{\textbf{Nr.\,\rule{10mm}{0.3pt}}}\hfill
+      \textcolor{gcgrau}{Schwierigkeit \ding{109}\ding{109}\ding{109}\ding{109}\ding{109}\quad
+      \ding{45}\,\rule{8mm}{0.3pt}\,min}}\\[2.5mm]
+    \vordruckzeile{Titel der Aufgabe}\linieleer
+    \vordruckzeile{Kategorie}\linieleer
+    \vordruckzeile{Beschreibung / Rätsel für die Cacher}
+    \linieleer\linieleer\linieleer
+    \vordruckzeile{Eigene Lösung / Final-Koordinaten}\linieleer
+    \tcblower
+    \centering\footnotesize\textcolor{gcgrau}{%
+      \ding{229}\, \textbf{Klebefläche} – hier in den Kurs einkleben \,\ding{228}}
+  \end{tcolorbox}%
+  \vspace{2mm}
+}
+
+% --- Schmaler Rollzettel für Petling / Micro --------------
+% #1 Titel  #2 Beschreibung
+\newcommand{\rollzettel}[2]{%
+  \begin{tcolorbox}[schnittkarte, width=82mm, valign=top, nobeforeafter]
+    {\small\bfseries\textcolor{gcgruen}{#1}}\par\vspace{1mm}
+    {\footnotesize #2}\par\vspace{1.5mm}
+    {\scriptsize\textcolor{gcgrau}{Final: N\,\rule{4mm}{0.3pt}\textdegree\,%
+      \rule{10mm}{0.3pt}\quad E\,\rule{4mm}{0.3pt}\textdegree\,\rule{10mm}{0.3pt}}}
+    \tcblower
+    \centering\scriptsize\textcolor{gcgrau}{\ding{34}\, ausschneiden \& einrollen}
+  \end{tcolorbox}\hspace{2mm}%
+}
+
+% ==========================================================
+\begin{document}
+\sloppy
+
+% ---------- Titel / Anleitung -----------------------------
+\begin{center}
+  {\Huge\bfseries\textcolor{gcgruen}{GeoCachePlaner}}\\[1mm]
+  {\Large Aufgabenblatt \textperiodcentered\ Vordruck zum Ausschneiden}\\[2mm]
+  {\color{gcgrau}\rule{0.5\linewidth}{0.6pt}}
+\end{center}
+\vspace{2mm}
+
+\begin{tcolorbox}[colback=gcgruen!6, colframe=gcgruen!55, sharp corners,
+                  title=\textbf{So benutzt du diese Vorlage}, fonttitle=\bfseries\color{white},
+                  coltitle=white, colbacktitle=gcgruen]
+\begin{enumerate}[leftmargin=6mm, itemsep=2pt]
+  \item \textbf{Drucken:} Diese Seiten auf festem Papier (120--160\,g/m\textsuperscript{2}) ausdrucken.
+  \item \textbf{Ausschneiden:} Jede Karte an der gestrichelten Linie (\ding{34}) ausschneiden.
+  \item \textbf{Anpassen:} Auf der Karte die eigenen Final-Koordinaten / Lösungswerte eintragen.
+  \item \textbf{Einkleben:} Die untere \textbf{Klebefläche} mit Klebestift bestreichen und die
+        Karte in dein Kursheft, Logbuch oder die Cache-Dose einkleben.
+\end{enumerate}
+\textit{Die Aufgabenkarten auf den Folgeseiten werden automatisch aus
+\texttt{data/aufgaben.json} erzeugt -- sie sind also immer auf demselben Stand wie die Website.}
+\end{tcolorbox}
+
+\vspace{4mm}
+{\large\bfseries\textcolor{gcgruen}{Blanko-Vordruck} \normalsize\textcolor{gcgrau}{-- selbst ausfüllen}}\par
+\vspace{2mm}
+\aufgabenkarteleer
+\aufgabenkarteleer
+
+\clearpage
+{\large\bfseries\textcolor{gcgruen}{Vorbereitete Aufgabenkarten}}\par
+\vspace{2mm}
+
+% ---------- automatisch erzeugte Karten -------------------
+\input{aufgaben-data.tex}
+
+\clearpage
+{\large\bfseries\textcolor{gcgruen}{Rollzettel für Petling \& Micro}}
+\normalsize\textcolor{gcgrau}{\ -- schmale Streifen zum Einrollen in die Dose}\par
+\vspace{3mm}
+\rollzettel{Caesar-Chiffre}{Verschiebe jeden Buchstaben um drei Stellen zurück.
+  Die Zahl der Buchstaben im Lösungswort ergibt die fehlenden Ziffern.}
+\rollzettel{Binärcode}{Wandle die 4-Bit-Blöcke in Dezimalzahlen um -- jeder Block ergibt eine Ziffer der Koordinaten.}
+
+\vspace{3mm}
+\rollzettel{Morsecode}{Dekodiere die Punkte und Striche nach dem internationalen Morsealphabet.}
+\rollzettel{}{}
+
+\end{document}

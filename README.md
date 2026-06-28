@@ -66,6 +66,9 @@ wird (siehe `.github/workflows/deploy.yml`).
   oder als PDF speichern.
 - **Automatisches Speichern:** Dein zusammengestellter Kurs bleibt im Browser gespeichert
   (LocalStorage) – auch nach dem Schließen und erneuten Öffnen.
+- **Aufgabenblatt zum Ausschneiden:** Druckfertige LaTeX-Vorlage mit Aufgabenkarten
+  zum Ausschneiden, Anpassen und Einkleben – siehe [`vorlagen/`](vorlagen/README.md)
+  (fertiges PDF: [`vorlagen/aufgabenkarten.pdf`](vorlagen/aufgabenkarten.pdf)).
 
 ---
 
@@ -82,6 +85,11 @@ geocach/
 │   └── aufgaben-data.js    # Eingebettete Aufgaben (damit file:// funktioniert)
 ├── data/
 │   └── aufgaben.json       # Aufgaben als Datenquelle
+├── vorlagen/               # Druckvorlage zum Ausschneiden (LaTeX/PDF)
+│   ├── aufgabenkarten.tex  # Vorlage mit Karten-Layout & Anleitung
+│   ├── build-aufgaben-tex.js # Generator JSON -> LaTeX-Daten
+│   ├── build.sh            # baut das PDF in einem Schritt
+│   └── aufgabenkarten.pdf  # fertige, druckfertige Vorlage
 └── assets/
     └── compass.svg         # Logo
 ```
