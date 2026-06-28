@@ -332,6 +332,56 @@ window.AUFGABEN_DATA = {
       "zeitaufwand": 25,
       "hinweis": "Antworten auf alle Fragen mit verlinkter Quelle (Wikipedia, Stadtarchiv) bereitstellen — aber erst nach dem Hint-System oder im Spoiler-Bereich. Nur faktisch eindeutige Fragen verwenden (keine Interpretationsfragen).",
       "beispiel": "Frage: 'In welchem Jahrhundert wurde die Stadtmauer gebaut?' → Antwort: 13 → A=1, B=3."
+    },
+    {
+      "id": "o01",
+      "titel": "Markanter Baum als Mess-Stage",
+      "beschreibung": "An einem markanten Baum vor Ort (z. B. eine alte Eiche, «BAUM xyz») wird eine dauerhafte Messung oder Zählung durchgeführt — Stammumfang, Anzahl der Hauptäste oder die Nummer einer Plakette. Das Ergebnis liefert Koordinaten-Ziffern. Das «BAUM»-Element ist frei austauschbar: setze deinen eigenen Wahrzeichen-Baum ein.",
+      "kategorie": "Ortsbezug & Landmarken",
+      "schwierigkeit": 2,
+      "zeitaufwand": 15,
+      "hinweis": "Den Baum eindeutig beschreiben (Art, Standort, Besonderheit) und ein Foto beilegen, damit Verwechslungen ausgeschlossen sind. Nur dauerhafte Merkmale nutzen (Umfang, Plakette) — keine saisonalen (Laub, Früchte). Den Platzhalter «BAUM» im Listing durch deinen lokalen Baum ersetzen.",
+      "beispiel": "Stammumfang der Dorflinde «BAUM» = 312 cm → A=3, B=1, C=2. Statt der Linde lässt sich jeder markante Baum einsetzen."
+    },
+    {
+      "id": "o02",
+      "titel": "Landmarken-Kreuzpeilung",
+      "beschreibung": "Von einem Startpunkt aus werden mit dem Kompass die Peilrichtungen zu zwei sichtbaren Landmarken (Kirchturm, Funkmast, «LANDMARKE A/B») bestimmt. Wo sich die beiden Peillinien auf der Karte schneiden, liegt die nächste Stage. Die Landmarken sind frei austauschbar — nimm Wahrzeichen aus deiner Umgebung.",
+      "kategorie": "Ortsbezug & Landmarken",
+      "schwierigkeit": 4,
+      "zeitaufwand": 30,
+      "hinweis": "Zwei gut sichtbare, weit auseinanderliegende Landmarken wählen (Peilwinkel möglichst nahe 90° für einen genauen Schnittpunkt). Auf die magnetische Missweisung hinweisen. Die Platzhalter «LANDMARKE A/B» durch eigene Wahrzeichen ersetzen.",
+      "beispiel": "Peilung zum Kirchturm = 40°, zum Wasserturm = 130° → Schnittpunkt markiert Stage 2. Türme beliebig durch lokale Landmarken austauschbar."
+    },
+    {
+      "id": "o03",
+      "titel": "Tätigkeiten-Kette: Hinweise erlaufen",
+      "beschreibung": "An mehreren Landmarken werden kleine Tätigkeiten ausgeführt (Stufen zählen, Inschrift lesen, Baumart bestimmen), die jeweils eine Hinweis-Ziffer enthüllen. Erst alle Tätigkeiten zusammen ergeben die Finalkoordinaten. Stationen und Tätigkeiten sind beliebig kombinier- und erweiterbar.",
+      "kategorie": "Ortsbezug & Landmarken",
+      "schwierigkeit": 3,
+      "zeitaufwand": 40,
+      "hinweis": "Pro Station nur eine eindeutige Tätigkeit bzw. Ziffer. Die Wegführung logisch und kurz halten (Gesamtweg unter 2 km). Eine Sammelkarte zum Eintragen der Ziffern beilegen. Stationen lassen sich modular austauschen und um eigene ergänzen.",
+      "beispiel": "Station 1: Stufen der «TREPPE» zählen = 8 → A=8. Station 2: Pflanzjahr-Schild am «BAUM» = 1995 → B=9. Station 3: …"
+    },
+    {
+      "id": "o04",
+      "titel": "Lückentext-Vorlage mit eigenem Wahrzeichen",
+      "beschreibung": "Eine fertige Rätsel-Vorlage mit Platzhaltern («BAUM», «LANDMARKE», «STRASSE»), in die der Owner seine eigenen lokalen Gegebenheiten einträgt. So entsteht in Minuten ein ortsspezifisches Rätsel, ohne alles neu erfinden zu müssen — maximale Austauschbarkeit der Elemente.",
+      "kategorie": "Ortsbezug & Landmarken",
+      "schwierigkeit": 1,
+      "zeitaufwand": 10,
+      "hinweis": "Alle Platzhalter konsequent in «Klammern» setzen, damit beim Befüllen keiner vergessen wird. Nach dem Ausfüllen das Rätsel selbst einmal vor Ort durchspielen. Die Vorlage dient als Grundgerüst für eigene Varianten.",
+      "beispiel": "„Gehe zum «BAUM xyz». Multipliziere die «Anzahl Bänke» mit «X» → erste Ziffer.“ Platzhalter durch reale Werte ersetzen: Eiche, 3 Bänke …"
+    },
+    {
+      "id": "o05",
+      "titel": "Naturmessung am Baum (Höhe & Schatten)",
+      "beschreibung": "Eine kleine Naturmessung am markanten Baum — etwa die Schattenlänge zur Mittagszeit, die Höhe per Försterdreieck oder der Umfang in Schritten. Das gemessene Ergebnis fließt als Ziffer in die Koordinaten ein. Baum und Messgröße sind frei austauschbar.",
+      "kategorie": "Ortsbezug & Landmarken",
+      "schwierigkeit": 3,
+      "zeitaufwand": 20,
+      "hinweis": "Die Messmethode genau erklären (z. B. Daumensprung, Försterdreieck). Auf eindeutige, reproduzierbare Ergebnisse achten und einen Toleranzbereich angeben. Bei schattenbasierten Aufgaben die Abhängigkeit von Tages- und Jahreszeit bedenken. «BAUM» frei wählbar.",
+      "beispiel": "Geschätzte Höhe der «EICHE» per Försterdreieck ≈ 24 m → A=2, B=4. Methode und Baum nach Belieben tauschen."
     }
   ]
 };
