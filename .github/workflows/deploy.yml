@@ -1,0 +1,45 @@
+name: Deploy auf GitHub Pages
+
+on:
+  # Bei jedem Push auf den Projekt-Branch automatisch deployen
+  push:
+    branches:
+      - claude/geocache-tasks-puzzles-site-l6l95s
+  # Manuelles Starten über den "Actions"-Tab erlauben
+  workflow_dispatch:
+
+# Rechte, die der Workflow zum Deployen auf Pages braucht
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nur ein Deployment gleichzeitig; laufende abbrechen zugunsten des neuesten
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Pages konfigurieren (aktiviert Pages bei Bedarf automatisch)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Seite als Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Die statische Seite liegt im Repo-Wurzelverzeichnis
+          path: .
+
+      - name: Auf GitHub Pages deployen
+        id: deployment
+        uses: actions/deploy-pages@v4
