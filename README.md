@@ -7,6 +7,12 @@ füge Aufgaben zu deinem Kurs hinzu, sortiere sie und drucke den fertigen Kurs a
 Die Seite ist komplett **statisch** (nur HTML, CSS, JavaScript) – sie braucht **kein Internet,
 keinen Server und keine Installation**.
 
+## 🌐 Live ansehen
+
+**👉 https://latticed.github.io/geocach/**
+
+Funktioniert auf Handy, Laptop und jedem Gerät mit dem Link – einfach öffnen.
+
 ---
 
 ## 💻 Auf dem Laptop öffnen
@@ -14,14 +20,14 @@ keinen Server und keine Installation**.
 ### Schritt 1 – Dateien auf den Laptop holen
 
 **Variante A: Ohne Git (am einfachsten)**
-1. Öffne das Projekt auf GitHub: <https://github.com/Toark/geocach>
+1. Öffne das Projekt auf GitHub: <https://github.com/latticed/geocach>
 2. Wähle oben rechts den Branch **`claude/geocache-tasks-puzzles-site-l6l95s`** aus.
 3. Klicke auf den grünen Button **`Code`** → **`Download ZIP`**.
 4. Entpacke die heruntergeladene ZIP-Datei in einen beliebigen Ordner.
 
 **Variante B: Mit Git**
 ```bash
-git clone https://github.com/Toark/geocach.git
+git clone https://github.com/latticed/geocach.git
 cd geocach
 git checkout claude/geocache-tasks-puzzles-site-l6l95s
 ```
@@ -42,9 +48,12 @@ direkt in deinem Standardbrowser. Fertig. ✅
 
 ## 📱 Auf dem Handy?
 
-Per Doppelklick funktioniert es nur am Computer. Um die Seite auch am Handy zu nutzen,
-müsstest du sie online stellen (z. B. über **GitHub Pages**) – dann ist sie per Link auf
-jedem Gerät erreichbar. Sag einfach Bescheid, wenn du das einrichten möchtest.
+Die Seite ist über **GitHub Pages** live: **https://latticed.github.io/geocach/**
+Einfach den Link am Handy öffnen. Tipp: Über das Browser-Menü „Zum Startbildschirm
+hinzufügen" bekommst du ein App-Icon für den GeoCachePlaner.
+
+Die Seite wird **automatisch aktualisiert**, sobald etwas auf den Projekt-Branch gepusht
+wird (siehe `.github/workflows/deploy.yml`).
 
 ---
 
