@@ -1,0 +1,599 @@
+% =====================================================
+% AUTOMATISCH ERZEUGT aus data/aufgaben.json
+% Nicht von Hand bearbeiten – stattdessen:
+%     node vorlagen/build-aufgaben-tex.js
+% =====================================================
+
+\aufgabenkarte{%
+  m01% nr
+}{%
+  Koordinaten-Arithmetik% titel
+}{%
+  Mathe \& Koordinaten% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  10% zeit (min)
+}{%
+  Teile die Koordinaten in ihre einzelnen Ziffern auf und führe einfache Rechenoperationen durch. Zum Beispiel: Addiere bestimmte Stellen, multipliziere sie oder bilde die Quersumme. Das Ergebnis ergibt die fehlenden Koordinaten des Finals.% beschreibung
+}{%
+  Koordinaten in Grad und Minuten aufteilen und Rechenoperationen einzeln pro Stelle definieren. Immer prüfen, ob das Ergebnis in einem realistischen Koordinatenbereich liegt.% hinweis
+}{%
+  N 48° (A+B).(C$\times$D) E 009° (E-F).(G+H) — wobei A–H Ziffern aus einem Rätsel sind.% beispiel
+}
+
+\aufgabenkarte{%
+  m02% nr
+}{%
+  Primzahlen-Koordinaten% titel
+}{%
+  Mathe \& Koordinaten% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  Finde die N-te Primzahl, um Ziffern in die Koordinaten einzusetzen. Die Cache-Beschreibung gibt an, welche Position in der Primzahlenfolge benötigt wird. Das stärkt mathematisches Denken ohne große Vorkenntnisse.% beschreibung
+}{%
+  Primzahltabellen nicht direkt im Listing angeben — das Nachschlagen ist Teil des Rätsels. Prüfe, ob die gesuchte Primzahl nicht zu groß wird (max. 2–3 Stellen).% hinweis
+}{%
+  A = die 7. Primzahl (= 17), B = die 4. Primzahl (= 7). Final: N 48° A.B...% beispiel
+}
+
+\aufgabenkarte{%
+  m03% nr
+}{%
+  Magisches Quadrat% titel
+}{%
+  Mathe \& Koordinaten% kategorie
+}{%
+  \schwierigkeit{5}% schwierigkeit
+}{%
+  35% zeit (min)
+}{%
+  Fülle ein 3$\times$3-Gitter mit den Zahlen 1–9 so aus, dass jede Zeile, Spalte und Diagonale die gleiche Summe ergibt. Bestimmte Felder sind bereits vorgegeben. Die Summe oder einzelne Felder codieren die Koordinaten.% beschreibung
+}{%
+  Die magische Summe eines 3$\times$3-Quadrats mit 1–9 ist immer 15. Drehe oder spiegle die Vorgabe, damit es nicht direkt gegoogelt werden kann. Das Feld in der Mitte ist immer 5.% hinweis
+}{%
+  Das vollständig ausgefüllte Quadrat ergibt in der ersten Zeile: 2, 9, 4 $\rightarrow$ A=2, B=9, C=4.% beispiel
+}
+
+\aufgabenkarte{%
+  m04% nr
+}{%
+  Fibonacci-Folge% titel
+}{%
+  Mathe \& Koordinaten% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Nutze bestimmte Glieder der Fibonacci-Folge (1, 1, 2, 3, 5, 8, 13, 21, 34, 55 \dots{}) als Ziffern für die Finalkoordinaten. Die Cache-Beschreibung gibt an, welches Glied gesucht wird.% beschreibung
+}{%
+  Nur einstellige Glieder (1–8) eignen sich direkt als Koordinaten-Ziffern. Zweistellige Glieder können als zwei separate Ziffern verwendet werden (z.B. 13 $\rightarrow$ A=1, B=3).% hinweis
+}{%
+  A = 6. Fibonacci-Zahl = 8, B = 8. Fibonacci-Zahl = 21 $\rightarrow$ B1=2, B2=1.% beispiel
+}
+
+\aufgabenkarte{%
+  m05% nr
+}{%
+  Geometrisches Rätsel% titel
+}{%
+  Mathe \& Koordinaten% kategorie
+}{%
+  \schwierigkeit{4}% schwierigkeit
+}{%
+  25% zeit (min)
+}{%
+  Berechne Winkel, Flächeninhalte oder Seiten einer geometrischen Figur anhand gegebener Maße. Die Ergebnisse werden als Ziffern in die Koordinaten eingesetzt. Einfache Formeln für Dreiecke oder Kreise eignen sich gut.% beschreibung
+}{%
+  Die Figur maßstabsgetreu skizzieren und deutlich beschriften. Ganzzahlige Ergebnisse durch passend gewählte Maße sicherstellen. Auf Winkelberechnung in Grad (nicht Bogenmaß) hinweisen.% hinweis
+}{%
+  Dreieck mit a=6, b=8, c=10 $\rightarrow$ Fläche = 24 $\rightarrow$ A=2, B=4.% beispiel
+}
+
+\aufgabenkarte{%
+  c01% nr
+}{%
+  Caesar-Chiffre% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{1}% schwierigkeit
+}{%
+  10% zeit (min)
+}{%
+  Ein Text wurde um N Positionen im Alphabet verschoben. Durch Zurückverschieben ergibt sich ein Wort oder eine Zahl, die in die Koordinaten einfließt. Eine der bekanntesten und einsteigerfreundlichsten Verschlüsselungen.% beschreibung
+}{%
+  ROT13 (N=13) ist ein Spezialfall und sehr bekannt — lieber eine andere Verschiebung wählen. Das verschlüsselte Wort sollte ohne Verschiebung keinen Sinn ergeben.% hinweis
+}{%
+  Verschlüsselter Text mit N=3: 'ILQDO' $\rightarrow$ entschlüsselt: 'FINAL'. Zähle Buchstaben: F=6, I=9 $\rightarrow$ Koordinaten-Ziffern.% beispiel
+}
+
+\aufgabenkarte{%
+  c02% nr
+}{%
+  Morsecode% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Dekodiere eine Sequenz aus Punkten und Strichen nach dem internationalen Morsealphabet. Das Ergebnis ist ein Wort oder eine Zahl, die als Koordinaten-Ziffern dient. Morsecode kann gut auf physischen Caches eingraviert werden.% beschreibung
+}{%
+  Buchstaben durch '/' und Wörter durch '//' trennen. Kurze Sequenzen wählen (max. 6–8 Zeichen). Auf Magnetstreifen oder Metall eingravierter Morsecode ist sehr wetterfest.% hinweis
+}{%
+  .-. .- - / -- .--- $\rightarrow$ RAT MJ $\rightarrow$ R=18, A=1, T=20 $\rightarrow$ kürze auf letzte Ziffer: A=8, B=1, C=0.% beispiel
+}
+
+\aufgabenkarte{%
+  c03% nr
+}{%
+  Binärcode% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  Wandle Binärzahlen (aus Nullen und Einsen) in Dezimalzahlen um. Jede Binärzahl ergibt eine Ziffer der Koordinaten. Mit 4-Bit-Blöcken erhält man Zahlen von 0–15, mit 3-Bit-Blöcken von 0–7.% beschreibung
+}{%
+  4-Bit-Blöcke (0000–1001) für Ziffern 0–9 eignen sich am besten. Blöcke deutlich durch Leerzeichen trennen. Visuell auch als schwarze/weiße Quadrate oder Punkte/Kreise darstellbar.% hinweis
+}{%
+  0101 0011 1000 $\rightarrow$ 5, 3, 8 $\rightarrow$ Koordinaten-Ziffern A=5, B=3, C=8.% beispiel
+}
+
+\aufgabenkarte{%
+  c04% nr
+}{%
+  Vigenère-Verschlüsselung% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{5}% schwierigkeit
+}{%
+  30% zeit (min)
+}{%
+  Ein Text wird mit einem Schlüsselwort ver- und entschlüsselt. Das Schlüsselwort ist am Cache-Ort versteckt (z.B. als Beschriftung, Gravur oder im Logbuch). Diese anspruchsvolle Methode kombiniert physische Suche mit Dekodierung.% beschreibung
+}{%
+  Das Schlüsselwort gut am Ort verstecken — aber nicht zu schwer zu finden. Ein Vigenère-Quadrat in der Beschreibung oder als Beilage erleichtert die Dekodierung. Schlüsselwort max. 5 Buchstaben.% hinweis
+}{%
+  Chiffretext: 'WMCZV', Schlüsselwort: 'WALD' $\rightarrow$ entschlüsselt: 'FINAL'.% beispiel
+}
+
+\aufgabenkarte{%
+  c05% nr
+}{%
+  Semaphore-Signale% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{4}% schwierigkeit
+}{%
+  25% zeit (min)
+}{%
+  Winkerpositions-Signale (Flaggensemaphor) stellen Buchstaben durch Armhaltungen dar. Eine illustrierte Tabelle oder Zeichnung gibt die Signale vor. Die entschlüsselten Buchstaben oder Zahlen ergeben die Koordinaten.% beschreibung
+}{%
+  Eine übersichtliche Illustrationstabelle aller 26 Buchstaben-Positionen beilegen. Nur 3–5 Zeichen verschlüsseln, sonst wird es unübersichtlich. Die Bilder können handgezeichnet oder digital erstellt werden.% hinweis
+}{%
+  Drei Semaphore-Positionen $\rightarrow$ G, P, S $\rightarrow$ G=7, P=6, S=9 $\rightarrow$ Koordinaten-Ziffern.% beispiel
+}
+
+\aufgabenkarte{%
+  c06% nr
+}{%
+  Polybius-Quadrat% titel
+}{%
+  Codes \& Verschlüsselung% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  In einem 5$\times$5-Gitter sind die Buchstaben A–Z (I und J teilen ein Feld) angeordnet. Jeder Buchstabe wird durch Zeile und Spalte (je 1–5) codiert. Paare von Zahlen werden Buchstaben zugeordnet, die Ziffern ergeben.% beschreibung
+}{%
+  Das klassische 5$\times$5-Gitter enthält I und J im selben Feld. Eine eigene Reihenfolge der Buchstaben (Schlüssel-Alphabet) macht die Aufgabe schwerer. Das Gitter im Listing abbilden.% hinweis
+}{%
+  Koordinate 31, 15, 43 $\rightarrow$ Buchstaben C, E, N $\rightarrow$ C=3, E=5, N=2 $\rightarrow$ Ziffern.% beispiel
+}
+
+\aufgabenkarte{%
+  n01% nr
+}{%
+  Baumbestimmung% titel
+}{%
+  Natur \& Umwelt% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  Anhand der Beschreibung von Blatt, Rinde, Frucht oder Wuchsform soll eine Baumart bestimmt werden. Die Anzahl der Buchstaben im deutschen Artnamen oder eine zugewiesene Nummer ergibt die Koordinaten-Ziffern.% beschreibung
+}{%
+  Nur häufige heimische Arten verwenden (z.B. Eiche, Buche, Birke). Bestimmungsmerkmale eindeutig beschreiben. Saisonale Merkmale (Blüten, Laub) nur verwenden, wenn der Cache ganzjährig aktiv ist.% hinweis
+}{%
+  Baum mit gelappten Blättern, brauner Borke und Eicheln $\rightarrow$ Stieleiche (9 Buchstaben) $\rightarrow$ A=9.% beispiel
+}
+
+\aufgabenkarte{%
+  n02% nr
+}{%
+  Jahresringe zählen% titel
+}{%
+  Natur \& Umwelt% kategorie
+}{%
+  \schwierigkeit{1}% schwierigkeit
+}{%
+  10% zeit (min)
+}{%
+  Ein Foto oder Scan eines Baumstumpf-Querschnitts liegt bei. Die Jahresringe werden gezählt, um das Alter des Baumes (= Koordinaten-Ziffer) zu bestimmen. Einfach, visuell und für alle Altersgruppen geeignet.% beschreibung
+}{%
+  Ein hochauflösendes, gut belichtetes Foto eines echten Baumstumpfs verwenden. Anzahl der sichtbaren Ringe auf 15–30 begrenzen, damit es eindeutig zählbar bleibt. Skala oder Münze als Maßstab mitilfegen.% hinweis
+}{%
+  Baumstumpf-Foto zeigt 23 Jahresringe $\rightarrow$ A=2, B=3.% beispiel
+}
+
+\aufgabenkarte{%
+  n03% nr
+}{%
+  Vogelstimmen-Quiz% titel
+}{%
+  Natur \& Umwelt% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Phonetische Beschreibungen oder Lautschrift bekannter Vogelstimmen müssen der richtigen Vogelart zugeordnet werden. Die Nummer der Art in einer alphabetischen Liste oder die Buchstabenanzahl des Artnamens ergibt Koordinaten-Ziffern.% beschreibung
+}{%
+  Nur heimische Allerweltsarten verwenden (Amsel, Kuckuck, Nachtigall). Phonetische Beschreibungen klar formulieren. Alternativ QR-Code mit Audio-Link auf die Cache-Dose kleben — Cacher hört die Stimme vor Ort.% hinweis
+}{%
+  Ruf: 'Kuh-kuck' $\rightarrow$ Kuckuck (7 Buchstaben) $\rightarrow$ A=7. Alphabetische Liste: Kuckuck = Nr. 5 $\rightarrow$ B=5.% beispiel
+}
+
+\aufgabenkarte{%
+  n04% nr
+}{%
+  Pflanzenfamilien zuordnen% titel
+}{%
+  Natur \& Umwelt% kategorie
+}{%
+  \schwierigkeit{4}% schwierigkeit
+}{%
+  25% zeit (min)
+}{%
+  Fünf Pflanzen müssen ihrer Pflanzenfamilie zugeordnet werden. Die Anzahl der richtig zugeordneten Paare oder ein Punktesystem ergibt die Koordinaten-Ziffern. Fördert botanisches Grundwissen auf spielerische Weise.% beschreibung
+}{%
+  Nur eindeutige, bekannte Paare verwenden (Rose $\rightarrow$ Rosengewächse, Tomate $\rightarrow$ Nachtschattengewächse). Botanische Namen auf Deutsch angeben. Eine Lösungstabelle im Listing erleichtert die Eingabe.% hinweis
+}{%
+  Löwenzahn $\rightarrow$ Korbblütler (richtig = 1 Punkt). 4 von 5 richtig $\rightarrow$ A=4.% beispiel
+}
+
+\aufgabenkarte{%
+  n05% nr
+}{%
+  Beaufort-Windskala% titel
+}{%
+  Natur \& Umwelt% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Fragen zur internationalen Beaufort-Windskala (0 = Windstille bis 12 = Orkan) müssen beantwortet werden. Stärken und ihre Merkmale (z.B. 'Blätter rascheln leicht' = Windstärke ?) ergeben Koordinaten-Ziffern.% beschreibung
+}{%
+  Die Beaufort-Skala beginnt bei 0 und endet bei 12 — ideal für zweistellige Koordinaten-Anteile. Beschreibungen der Windstärken sind im Internet frei verfügbar. Nur Stärken 0–9 für einstellige Ziffern nutzen.% hinweis
+}{%
+  'Zweige in Bewegung, Regenschirm schwer zu halten' $\rightarrow$ Windstärke 6 $\rightarrow$ A=6.% beispiel
+}
+
+\aufgabenkarte{%
+  s01% nr
+}{%
+  Klassische Zwei-Stage% titel
+}{%
+  Multi-Stage% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  30% zeit (min)
+}{%
+  Stage 1 enthält versteckte Informationen (z.B. eingravierte Ziffern, eine beschriftete Dose), die die Koordinaten von Stage 2 (dem Final) ergeben. Der einfachste Multi-Cache-Aufbau — gut für Einsteiger geeignet.% beschreibung
+}{%
+  Koordinaten gut lesbar anbringen — graviert auf Metall oder auf wetterfestem Material. Stage 1 sollte attraktiv und gut versteckt sein, damit sich der Umweg lohnt. Abstand zwischen Stages: 200–800 m.% hinweis
+}{%
+  Stage 1 (Parkbank): Gravierte Zahl '482' unter der Sitzfläche $\rightarrow$ Final: N 48° 2X.XXX.% beispiel
+}
+
+\aufgabenkarte{%
+  s02% nr
+}{%
+  Rätsel-Kette% titel
+}{%
+  Multi-Stage% kategorie
+}{%
+  \schwierigkeit{4}% schwierigkeit
+}{%
+  60% zeit (min)
+}{%
+  Jede Stage enthält ein kleines Rätsel. Die Lösung ergibt die Koordinaten der nächsten Stage. Die letzte Lösung führt zum Final. Die Schwierigkeit steigt mit der Anzahl der Stages und der Rätselkomplexität.% beschreibung
+}{%
+  Zwischen den Stages maximal 500 m Fußweg einplanen. Jede Stage auf Langlebigkeit prüfen (wetterfest, schwer zu muggeln). Einen 'Not-Hint' für Cacher bereitstellen, die bei einer Stage nicht weiterkommen.% hinweis
+}{%
+  Stage 1 $\rightarrow$ Morsecode auf Schild $\rightarrow$ Stage 2. Stage 2 $\rightarrow$ Baumringzählung $\rightarrow$ Stage 3. Stage 3 = Final.% beispiel
+}
+
+\aufgabenkarte{%
+  s03% nr
+}{%
+  Fotopunkt-Stage% titel
+}{%
+  Multi-Stage% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  Ein Foto eines markanten Ortes liegt bei. Der Cacher muss den exakten Standpunkt finden, von dem das Foto aufgenommen wurde. Dort befindet sich ein Objekt mit weiterführenden Informationen. Erfordert Orientierungsvermögen.% beschreibung
+}{%
+  Markantes, langlebiges Motiv wählen (Denkmal, Gebäude, Brücke) — kein saisonales Laub. Auf dem Foto Details zeigen, die eine eindeutige Ortung ermöglichen. Das versteckte Objekt muss vom Fotopunkt sichtbar sein.% hinweis
+}{%
+  Foto zeigt Brunnen mit Kirche im Hintergrund $\rightarrow$ Standpunkt = Brücke nordöstlich $\rightarrow$ dort Magnetdose.% beispiel
+}
+
+\aufgabenkarte{%
+  s04% nr
+}{%
+  Virtuelle Stage mit Info-Tafel% titel
+}{%
+  Multi-Stage% kategorie
+}{%
+  \schwierigkeit{1}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Eine öffentliche Informationstafel, ein Denkmal oder eine Gedenktafel enthält Zahlen oder Buchstaben, die als Koordinaten-Ziffern dienen. Der Cacher muss die Tafel finden und die richtigen Angaben herauslesen.% beschreibung
+}{%
+  Nur permanent angebrachte Tafeln verwenden — kein saisonaler Schmuck. Prüfen, ob die Tafel in Zukunft verändert oder entfernt werden könnte. Die genaue Stelle der gesuchten Zahl eindeutig beschreiben.% hinweis
+}{%
+  Hinweisschild 'Erbaut im Jahr 1887' $\rightarrow$ A=1, B=8, C=8, D=7.% beispiel
+}
+
+\aufgabenkarte{%
+  k01% nr
+}{%
+  Anagramm-Rätsel% titel
+}{%
+  Kreativ \& Rätsel% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Buchstaben eines oder mehrerer Wörter werden durcheinandergewürfelt. Durch Umsortieren entsteht ein neues deutsches Wort. Die Anzahl bestimmter Buchstaben im Lösungswort oder dessen Länge ergibt die Koordinaten-Ziffern.% beschreibung
+}{%
+  Nur gebräuchliche deutsche Wörter verwenden. Das Anagramm sollte nur eine eindeutige Lösung haben. Online-Anagramm-Löser testen, ob das Rätsel unbeabsichtigt mehrere Lösungen hat.% hinweis
+}{%
+  LIENB $\rightarrow$ BELIN $\rightarrow$ BERLIN (6 Buchstaben) $\rightarrow$ A=6. Buchstabe 'E' kommt 1$\times$ vor $\rightarrow$ B=1.% beispiel
+}
+
+\aufgabenkarte{%
+  k02% nr
+}{%
+  Bilderrätsel / Rebus% titel
+}{%
+  Kreativ \& Rätsel% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  Bilder stehen für Silben oder Wörter. Zusammengesetzt ergeben sie ein deutsches Wort (Kompositum). Die Länge des Wortes, ein bestimmter Buchstabe oder eine enthaltene Zahl ergibt die Koordinaten-Ziffern.% beschreibung
+}{%
+  Bilder eindeutig wählen — kein Spielraum für mehrere Interpretationen. Clipart oder einfache handgezeichnete Skizzen reichen völlig aus. Deutsch-typische Komposita (Sonnenblume, Waldweg) eignen sich gut.% hinweis
+}{%
+  [Bild: Sonne] + [Bild: Blume] $\rightarrow$ SONNENBLUME (11 Buchstaben) $\rightarrow$ A=1, B=1.% beispiel
+}
+
+\aufgabenkarte{%
+  k03% nr
+}{%
+  Mini-Kreuzworträtsel% titel
+}{%
+  Kreativ \& Rätsel% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  25% zeit (min)
+}{%
+  Ein kleines Kreuzworträtsel (5$\times$5 bis 8$\times$8 Felder) mit deutschen Begriffen. Bestimmte farblich markierte Felder ergeben, in der richtigen Reihenfolge gelesen, die Koordinaten-Ziffern oder ein Lösungswort.% beschreibung
+}{%
+  Markierte Felder farblich hervorheben oder nummerieren. Begriffe zum Geocaching-Thema wählen (Cache, Logbuch, Final, Muggle). Das Rätsel vor Veröffentlichung von Dritten lösen lassen.% hinweis
+}{%
+  Markierte Felder (Reihe 1, Spalte 3; Reihe 2, Spalte 5) ergeben: 4, 8 $\rightarrow$ A=4, B=8.% beispiel
+}
+
+\aufgabenkarte{%
+  k04% nr
+}{%
+  Buchstaben-Suchrätsel% titel
+}{%
+  Kreativ \& Rätsel% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  In einem Buchstabengitter sind mehrere Wörter versteckt (waagrecht, senkrecht oder diagonal). Die Buchstaben, die nach dem Finden aller Wörter übrig bleiben, ergeben — von links nach rechts gelesen — die Koordinaten-Ziffern.% beschreibung
+}{%
+  Gitter nicht zu groß (max. 10$\times$10). Verbleibende Buchstaben so anordnen, dass sie sinnvoll Ziffern (in Worten) ergeben. Mit einem Grid-Generator arbeiten, damit das Rätsel stimmig ist.% hinweis
+}{%
+  Verbleibende Buchstaben: Z-W-E-I-V-I-E-R $\rightarrow$ ZWEI VIER $\rightarrow$ A=2, B=4.% beispiel
+}
+
+\aufgabenkarte{%
+  k05% nr
+}{%
+  Logik-Puzzle (Einstein-Rätsel)% titel
+}{%
+  Kreativ \& Rätsel% kategorie
+}{%
+  \schwierigkeit{5}% schwierigkeit
+}{%
+  40% zeit (min)
+}{%
+  Fünf Personen, Objekte oder Orte mit verschiedenen Eigenschaften müssen anhand von 4–6 Hinweisen eindeutig zugeordnet werden. Die richtige Lösung ergibt eine Zahl oder einen Code für die Koordinaten.% beschreibung
+}{%
+  Eine Lösungstabelle (Matrix) zum Ausfüllen beilegen — ohne diese ist das Puzzle kaum lösbar. Maximal 4$\times$4 Felder für moderate Schwierigkeit. Das Puzzle muss genau eine eindeutige Lösung haben.% hinweis
+}{%
+  Wer wohnt im roten Haus? $\rightarrow$ Antwort: Max. Position von Max = 3 $\rightarrow$ A=3.% beispiel
+}
+
+\aufgabenkarte{%
+  t01% nr
+}{%
+  QR-Code scannen% titel
+}{%
+  Technik% kategorie
+}{%
+  \schwierigkeit{1}% schwierigkeit
+}{%
+  5% zeit (min)
+}{%
+  An der Cache-Dose oder einem Waypoint befindet sich ein QR-Code. Das Scannen mit einem Smartphone liefert die nächsten Koordinaten, einen Hinweis oder ein Codewort. Einsteigerfreundlich und technisch unkompliziert.% beschreibung
+}{%
+  QR-Codes in wetterfester Folie einschweißen oder auf Metall gravieren lassen. Immer auf eine eigene Webseite oder einen URL-Shortener verlinken — nie direkt auf externe Dienste, die sich ändern können.% hinweis
+}{%
+  QR-Code an Dose $\rightarrow$ 'https://example.com/cache/xyz' $\rightarrow$ Seite zeigt: Final: N 48° 12.345.% beispiel
+}
+
+\aufgabenkarte{%
+  t02% nr
+}{%
+  NFC-Tag auslesen% titel
+}{%
+  Technik% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  10% zeit (min)
+}{%
+  Ein NFC-Chip (Near Field Communication) ist in die Cache-Dose oder ein Objekt eingebettet. Beim Heranhalten eines Smartphones werden Koordinaten oder ein Code übertragen. Unsichtbar und sehr elegant umsetzbar.% beschreibung
+}{%
+  NFC-Tags sind günstig und können in Epoxidharz eingebettet werden (wetterfest). Darauf hinweisen, dass NFC am Smartphone aktiviert sein muss. NDEF-Format für maximale Kompatibilität verwenden.% hinweis
+}{%
+  Metall-Stein-Attrappe mit NFC-Tag $\rightarrow$ Tippen mit Handy $\rightarrow$ URL öffnet sich mit Final-Koordinaten.% beispiel
+}
+
+\aufgabenkarte{%
+  t03% nr
+}{%
+  UV-Farben-Rätsel% titel
+}{%
+  Technik% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Ein Text oder eine Zahl ist mit UV-reaktiver Tinte auf einem Objekt geschrieben — unsichtbar bei Tageslicht, sichtbar unter UV-Licht (Schwarzlicht). Der Inhalt ergibt die Koordinaten-Ziffern oder ein Lösungswort.% beschreibung
+}{%
+  In der Cache-Beschreibung deutlich darauf hinweisen, dass eine UV-Taschenlampe (Schwarzlicht) benötigt wird. UV-Stifte für Papier und Kunststoff im Fachhandel erhältlich. Bei Sonnenlicht können schwache UV-Strahlen die Schrift sichtbar machen.% hinweis
+}{%
+  Unter UV-Licht lesbar: '4815' $\rightarrow$ A=4, B=8, C=1, D=5 $\rightarrow$ Finalkoordinaten.% beispiel
+}
+
+\aufgabenkarte{%
+  g01% nr
+}{%
+  Historisches Datum% titel
+}{%
+  Geschichte \& Kultur% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  15% zeit (min)
+}{%
+  Eine Recherche über ein lokales historisches Ereignis ist notwendig. Das Gründungsjahr eines Gebäudes, das Datum einer Stadtgründung oder ein markantes Jahr ergibt Koordinaten-Ziffern. Verbindet Geocaching mit lokaler Geschichte.% beschreibung
+}{%
+  Eine Wikipedia-Quelle oder einen lokalen Heimatkundeverein als Recherchequelle angeben. Die gesuchte Jahreszahl sollte nicht zu bekannt sein (nicht 1945 oder 2000). Mehrstellige Jahreszahlen als Ziffern-Folge verwenden.% hinweis
+}{%
+  Stadtgründung Musterstadt: 1263 $\rightarrow$ A=1, B=2, C=6, D=3.% beispiel
+}
+
+\aufgabenkarte{%
+  g02% nr
+}{%
+  Denkmal-Recherche% titel
+}{%
+  Geschichte \& Kultur% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  20% zeit (min)
+}{%
+  An einem Denkmal, einer Gedenktafel oder einem historischen Ort ist eine bestimmte Zahl oder ein Name zu finden. Der Cacher muss vor Ort die richtige Information herauslesen und für die Koordinatenberechnung nutzen.% beschreibung
+}{%
+  Nur permanent angebrachte Tafeln verwenden. Die gesuchte Information eindeutig beschreiben (z.B. 'die 4-stellige Jahreszahl auf der rechten Seite der Tafel'). Saisonalen Schmuck oder temporäre Objekte vermeiden.% hinweis
+}{%
+  Kriegerdenkmal: Inschrift '1914–1918' $\rightarrow$ Zähle Gefallene auf Tafel: 47 $\rightarrow$ A=4, B=7.% beispiel
+}
+
+\aufgabenkarte{%
+  g03% nr
+}{%
+  Straßennamen-Rätsel% titel
+}{%
+  Geschichte \& Kultur% kategorie
+}{%
+  \schwierigkeit{2}% schwierigkeit
+}{%
+  10% zeit (min)
+}{%
+  Die Buchstanzahl eines historischen Straßennamens, der am Cache-Ort sichtbar ist, wird als Koordinaten-Ziffer verwendet. Kombiniert physische Ortskenntnisse mit historischem Bezug. Einfach und ortsspezifisch.% beschreibung
+}{%
+  Nur das Straßenschild am Ort selbst als Quelle verwenden, nicht Online-Karten — das macht es ortsspezifisch. Leerzeichen und Bindestriche nicht mitzählen. Bei Straßen mit Umlauten (ä, ö, ü) Regel festlegen.% hinweis
+}{%
+  Am Cache befindet sich das Schild 'Hauptstraße' (11 Buchstaben) $\rightarrow$ A=1, B=1.% beispiel
+}
+
+\aufgabenkarte{%
+  g04% nr
+}{%
+  Wappenkunde% titel
+}{%
+  Geschichte \& Kultur% kategorie
+}{%
+  \schwierigkeit{4}% schwierigkeit
+}{%
+  30% zeit (min)
+}{%
+  Das Wappen einer Gemeinde, Burg oder Institution enthält heraldische Figuren und Farben. Jeder Farbe ist eine Zahl zugeordnet (Gold=1, Silber=2, Blau=3, Rot=4, Schwarz=5). Die Farbfolge im Wappen ergibt die Koordinaten.% beschreibung
+}{%
+  Heraldische Farbbeschreibungen: Gold/Gelb=1, Silber/Weiß=2, Blau/Azur=3, Rot=4, Schwarz/Sable=5, Grün=6. Das Wappen als klares Bild in der Cache-Beschreibung zeigen. Wappenbeschreibung (Blasonierung) beilegen.% hinweis
+}{%
+  Wappen: Blau-Rot-Gold von links nach rechts $\rightarrow$ A=3, B=4, C=1.% beispiel
+}
+
+\aufgabenkarte{%
+  g05% nr
+}{%
+  Kulturgeschichtliches Quiz% titel
+}{%
+  Geschichte \& Kultur% kategorie
+}{%
+  \schwierigkeit{3}% schwierigkeit
+}{%
+  25% zeit (min)
+}{%
+  Fünf Fragen zur lokalen Kultur, Geschichte oder Geografie müssen beantwortet werden. Jede richtige Antwort gibt eine Zahl oder einen Buchstaben. Die Summe der Antworten oder einzelne Werte ergeben die Koordinaten-Ziffern.% beschreibung
+}{%
+  Antworten auf alle Fragen mit verlinkter Quelle (Wikipedia, Stadtarchiv) bereitstellen — aber erst nach dem Hint-System oder im Spoiler-Bereich. Nur faktisch eindeutige Fragen verwenden (keine Interpretationsfragen).% hinweis
+}{%
+  Frage: 'In welchem Jahrhundert wurde die Stadtmauer gebaut?' $\rightarrow$ Antwort: 13 $\rightarrow$ A=1, B=3.% beispiel
+}
