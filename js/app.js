@@ -206,11 +206,13 @@ function renderKursBuilder() {
   const liste = document.getElementById('kurs-liste');
   const hint = document.getElementById('kurs-leer-hint');
   const btnDrucken = document.getElementById('btn-drucken');
+  const btnLatex = document.getElementById('btn-latex');
   const btnLeeren = document.getElementById('btn-leeren');
   const hatAufgaben = state.kurs.length > 0;
 
   hint.style.display = hatAufgaben ? 'none' : '';
   btnDrucken.disabled = !hatAufgaben;
+  if (btnLatex) btnLatex.disabled = !hatAufgaben;
   btnLeeren.disabled = !hatAufgaben;
 
   if (!hatAufgaben) {
@@ -316,9 +318,28 @@ function schwierigkeitText(n) {
   return texte[n] || `${n}/5`;
 }
 
+// Leeres Koordinaten-Template (Kästchen zum Ausfüllen).
+// stellen = Anzahl Grad-Stellen (2 für Breite N, 3 für Länge E).
+function koordZeile(richtung, stellen) {
+  const box = '<span class="kbox"></span>';
+  const grad = box.repeat(stellen);
+  return `
+    <div class="print-koord-zeile">
+      <span class="print-koord-himmel">${richtung}</span>
+      ${grad}<span class="print-koord-zeichen">°</span>
+      ${box.repeat(2)}<span class="print-koord-zeichen">.</span>${box.repeat(3)}
+      <span class="print-koord-zeichen">′</span>
+    </div>`;
+}
+
 function printKurs() {
   const aufgaben = state.kurs.map(findAufgabe).filter(Boolean);
   if (aufgaben.length === 0) return;
+
+  // Optionen aus der UI lesen (mit sicheren Standardwerten)
+  const zeigeLoesung = document.getElementById('opt-loesungsfelder')?.checked ?? true;
+  const zeigeTipps   = document.getElementById('opt-tipps')?.checked ?? true;
+  const eigeneSeite  = document.getElementById('opt-eigene-seite')?.checked ?? false;
 
   const name = state.kursName || 'Mein Geocaching-Kurs';
   const beschreibung = state.kursBeschreibung;
@@ -326,22 +347,32 @@ function printKurs() {
   const avgSch = (aufgaben.reduce((s, a) => s + a.schwierigkeit, 0) / aufgaben.length).toFixed(1);
   const datum = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
 
+  const loesungsBlock = `
+    <div class="print-loesung">
+      <div class="print-loesung-titel">Lösung &amp; Rechenweg</div>
+      <div class="print-linie"></div>
+      <div class="print-linie"></div>
+      <div class="print-linie"></div>
+      <div class="print-koordinaten">
+        <span class="print-koord-label">Ergebnis-Koordinaten</span>
+        ${koordZeile('N', 2)}
+        ${koordZeile('E', 3)}
+      </div>
+    </div>`;
+
   const aufgabenHTML = aufgaben.map((a, i) => `
-    <div class="print-aufgabe">
+    <div class="print-aufgabe${eigeneSeite ? ' print-eigene-seite' : ''}">
       <div class="print-aufgabe-header">
-        <span class="print-aufgabe-nr">Aufgabe ${i + 1} von ${aufgaben.length}</span>
+        <span class="print-checkbox" aria-hidden="true"></span>
+        <span class="print-aufgabe-nr">Aufgabe ${i + 1} / ${aufgaben.length}</span>
         <span class="print-aufgabe-titel">${escapeHtml(a.titel)}</span>
         <span class="print-aufgabe-sterne">${'★'.repeat(a.schwierigkeit)}${'☆'.repeat(5 - a.schwierigkeit)}</span>
       </div>
       <div class="print-kategorie">${escapeHtml(a.kategorie)} · ${schwierigkeitText(a.schwierigkeit)} · ca. ${a.zeitaufwand} Minuten</div>
       <p class="print-beschreibung">${escapeHtml(a.beschreibung)}</p>
-      <div class="print-hinweis"><strong>Tipp für Cache-Owner:</strong> ${escapeHtml(a.hinweis)}</div>
       <div class="print-beispiel"><strong>Beispiel:</strong> ${escapeHtml(a.beispiel)}</div>
-      <div class="print-notiz">
-        <strong>Meine Notizen &amp; Koordinaten:</strong>
-        <div class="print-notiz-linie"></div>
-        <div class="print-notiz-linie"></div>
-      </div>
+      ${zeigeTipps ? `<div class="print-hinweis"><strong>Tipp für Cache-Owner:</strong> ${escapeHtml(a.hinweis)}</div>` : ''}
+      ${zeigeLoesung ? loesungsBlock : ''}
     </div>
   `).join('');
 
@@ -349,7 +380,7 @@ function printKurs() {
   printView.innerHTML = `
     <div class="print-header">
       <div class="print-logo-row">
-        <span class="print-logo-text">GeoCachePlaner — geocach</span>
+        <span class="print-logo-text">GeoCachePlaner — Arbeitsblatt</span>
       </div>
       <div class="print-kurs-titel">${escapeHtml(name)}</div>
       ${beschreibung ? `<p class="print-kurs-beschreibung">${escapeHtml(beschreibung)}</p>` : ''}
@@ -359,6 +390,10 @@ function printKurs() {
         <span><strong>Ø Schwierigkeit:</strong> ${avgSch}/5</span>
         <span><strong>Erstellt:</strong> ${datum}</span>
       </div>
+      <div class="print-teilnehmer">
+        <span>Name: <span class="print-feld-linie"></span></span>
+        <span>Datum: <span class="print-feld-linie kurz"></span></span>
+      </div>
     </div>
 
     <div class="print-aufgaben-titel">Aufgaben &amp; Rätsel</div>
@@ -366,11 +401,158 @@ function printKurs() {
 
     <div class="print-footer">
       <span>GeoCachePlaner · Erstellt am ${datum}</span>
-      <span>Seite <span class="page-nr"></span></span>
+      <span>geocach</span>
     </div>
   `;
 
   window.print();
+}
+
+// === LATEX-EXPORT ===
+
+// Sonderzeichen für LaTeX maskieren (Umlaute bleiben dank utf8 erhalten).
+function latexEscape(s) {
+  return String(s)
+    .replace(/\\/g, '\\textbackslash{}')
+    .replace(/([&%$#_{}])/g, '\\$1')
+    .replace(/~/g, '\\textasciitilde{}')
+    .replace(/\^/g, '\\textasciicircum{}');
+}
+
+// Schwierigkeit als pifont-Sterne (gefüllt/offen) – kompiliert mit pdflatex.
+function latexSterne(n) {
+  return '\\ding{72}'.repeat(n) + '\\ding{73}'.repeat(5 - n);
+}
+
+// Eine Koordinatenzeile mit sauberen Ausfülllinien statt offener Kästchen.
+function latexKoordZeile(richtung, gradStellen) {
+  const fill = (w) => `\\rule[-2pt]{${w}}{0.4pt}`;
+  const grad = Array(gradStellen).fill(fill('0.5cm')).join('\\,');
+  return `\\textbf{${richtung}}\\; ${grad}\\,$^\\circ$\\; ${fill('0.5cm')}\\,${fill('0.5cm')}` +
+         `\\,$.$\\,${fill('1.4cm')}\\,$'$`;
+}
+
+function buildLatex() {
+  const aufgaben = state.kurs.map(findAufgabe).filter(Boolean);
+  if (aufgaben.length === 0) return '';
+
+  const zeigeLoesung = document.getElementById('opt-loesungsfelder')?.checked ?? true;
+  const zeigeTipps   = document.getElementById('opt-tipps')?.checked ?? true;
+  const eigeneSeite  = document.getElementById('opt-eigene-seite')?.checked ?? false;
+
+  const name = latexEscape(state.kursName || 'Mein Geocaching-Kurs');
+  const beschreibung = state.kursBeschreibung ? latexEscape(state.kursBeschreibung) : '';
+  const gesamtZeit = aufgaben.reduce((s, a) => s + a.zeitaufwand, 0);
+  const avgSch = (aufgaben.reduce((s, a) => s + a.schwierigkeit, 0) / aufgaben.length).toFixed(1);
+  const datum = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+
+  const loesung = `
+\\vspace{8pt}
+{\\small\\bfseries\\color{cachegruen}LÖSUNG \\& RECHENWEG}
+\\loesungslinie
+\\loesungslinie
+\\loesungslinie
+\\vspace{8pt}
+
+\\textbf{Ergebnis-Koordinaten:}\\\\[4pt]
+${latexKoordZeile('N', 2)}\\\\[8pt]
+${latexKoordZeile('E', 3)}`;
+
+  const aufgabenTex = aufgaben.map((a, i) => `
+\\aufgabe{${i + 1}}{${aufgaben.length}}{${latexEscape(a.titel)}}{${latexSterne(a.schwierigkeit)}}
+{\\itshape ${latexEscape(a.kategorie)} \\textperiodcentered{} ${schwierigkeitText(a.schwierigkeit)} \\textperiodcentered{} ca. ${a.zeitaufwand} Minuten\\par}
+\\vspace{4pt}
+${latexEscape(a.beschreibung)}\\par
+\\vspace{4pt}
+\\textbf{Beispiel:} ${latexEscape(a.beispiel)}\\par
+${zeigeTipps ? `\\vspace{4pt}\\tippbox{${latexEscape(a.hinweis)}}` : ''}
+${zeigeLoesung ? loesung : ''}
+\\end{aufgabenbox}
+${eigeneSeite && i < aufgaben.length - 1 ? '\\newpage' : '\\vspace{12pt}'}
+`).join('\n');
+
+  return `\\documentclass[11pt,a4paper]{article}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage[a4paper,margin=2.2cm]{geometry}
+\\usepackage{xcolor}
+\\usepackage{amssymb}
+\\usepackage{pifont}
+\\usepackage{mdframed}
+\\usepackage{parskip}
+\\usepackage{fancyhdr}
+
+\\definecolor{cachegruen}{RGB}{45,90,39}
+\\definecolor{cachegold}{RGB}{122,92,16}
+\\definecolor{tippbg}{RGB}{244,244,244}
+
+% Eine leere Lösungslinie zum Ausfüllen
+\\newcommand{\\loesungslinie}{\\par\\vspace{14pt}\\noindent\\rule{\\linewidth}{0.3pt}}
+
+% Tipp-Kasten für Cache-Owner
+\\newcommand{\\tippbox}[1]{%
+  \\begin{mdframed}[backgroundcolor=tippbg,linewidth=0pt,leftline=true,
+    linecolor=cachegruen,innerleftmargin=8pt,innertopmargin=5pt,innerbottommargin=5pt]
+    {\\small\\textbf{\\color{cachegruen}Tipp für Cache-Owner:} #1}
+  \\end{mdframed}}
+
+% Aufgaben-Rahmen
+\\newenvironment{aufgabenbox}{%
+  \\begin{mdframed}[linecolor=cachegruen!40,linewidth=0.5pt,
+    innermargin=8pt,innertopmargin=8pt,innerbottommargin=8pt]}%
+  {\\end{mdframed}}
+
+% Aufgaben-Kopf: \\aufgabe{nr}{gesamt}{titel}{sterne}
+\\newcommand{\\aufgabe}[4]{%
+  \\begin{aufgabenbox}
+  {\\footnotesize\\color{cachegruen}$\\square$\\; Aufgabe #1 / #2}\\hfill{\\color{cachegold}#4}\\par
+  \\vspace{2pt}{\\large\\bfseries #3}\\par\\vspace{4pt}}
+
+\\pagestyle{fancy}\\fancyhf{}
+\\renewcommand{\\headrulewidth}{0pt}
+\\fancyfoot[L]{\\footnotesize\\color{gray}GeoCachePlaner \\textperiodcentered{} Erstellt am ${datum}}
+\\fancyfoot[R]{\\footnotesize\\color{gray}Seite \\thepage}
+
+\\begin{document}
+
+\\begin{center}
+  {\\LARGE\\bfseries\\color{cachegruen} ${name}}\\\\[4pt]
+  ${beschreibung ? `{\\small ${beschreibung}}\\\\[6pt]` : ''}
+  {\\footnotesize Aufgaben: ${aufgaben.length} \\quad Gesamtzeit: ca. ${gesamtZeit} Min. \\quad Ø Schwierigkeit: ${avgSch}/5}
+\\end{center}
+\\vspace{6pt}
+\\noindent Name: \\rule[-2pt]{5cm}{0.4pt}\\hfill Datum: \\rule[-2pt]{3cm}{0.4pt}
+\\vspace{6pt}
+\\hrule
+\\vspace{14pt}
+
+${aufgabenTex}
+
+\\end{document}
+`;
+}
+
+// Datei im Browser herunterladen
+function downloadDatei(dateiname, inhalt, mime) {
+  const blob = new Blob([inhalt], { type: mime || 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = dateiname;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function exportLatex() {
+  const tex = buildLatex();
+  if (!tex) return;
+  const slug = (state.kursName || 'cachekurs')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'cachekurs';
+  downloadDatei(`${slug}.tex`, tex, 'application/x-tex;charset=utf-8');
 }
 
 // === EVENT-LISTENER ===
@@ -429,6 +611,9 @@ function attachStaticListeners() {
 
   // Drucken-Button
   document.getElementById('btn-drucken').addEventListener('click', printKurs);
+
+  // LaTeX-Export
+  document.getElementById('btn-latex').addEventListener('click', exportLatex);
 
   // Kurs leeren
   document.getElementById('btn-leeren').addEventListener('click', clearKurs);

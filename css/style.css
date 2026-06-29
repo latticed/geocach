@@ -615,6 +615,42 @@ input:focus, textarea:focus {
 }
 
 /* Aktionsbuttons */
+.print-optionen {
+  border: 1px solid var(--color-border-lt);
+  border-radius: var(--radius-md);
+  padding: 10px 12px 12px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.print-optionen legend {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted, #6b6b6b);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0 6px;
+}
+
+.print-opt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.print-opt input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
 .kurs-actions {
   display: flex;
   flex-direction: column;
@@ -665,6 +701,32 @@ input:focus, textarea:focus {
 .btn-danger:hover:not(:disabled) {
   background: var(--color-danger);
   color: #fff;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition);
+  min-height: 44px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* Kurs-Liste */

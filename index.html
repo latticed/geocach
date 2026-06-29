@@ -110,10 +110,30 @@
             </div>
           </div>
 
+          <fieldset class="print-optionen" id="print-optionen">
+            <legend>Arbeitsblatt-Optionen</legend>
+            <label class="print-opt">
+              <input type="checkbox" id="opt-loesungsfelder" checked>
+              Lösungsfelder &amp; Koordinaten zum Ausfüllen
+            </label>
+            <label class="print-opt">
+              <input type="checkbox" id="opt-tipps" checked>
+              Tipps für Cache-Owner mitdrucken
+            </label>
+            <label class="print-opt">
+              <input type="checkbox" id="opt-eigene-seite">
+              Jede Aufgabe auf eigene Seite
+            </label>
+          </fieldset>
+
           <div class="kurs-actions">
             <button class="btn-primary" id="btn-drucken" disabled>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a1 1 0 001 1h8a1 1 0 001-1v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a1 1 0 00-1-1H6a1 1 0 00-1 1zm2 0h6v3H7V4zm-1 9H6v2h8v-2h-1a1 1 0 01-1-1v-1H8v1a1 1 0 01-1 1zm8-5a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/></svg>
               Kurs drucken / PDF
+            </button>
+            <button class="btn-secondary" id="btn-latex" disabled>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h5.586A2 2 0 0113 2.586L15.414 5A2 2 0 0116 6.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+              Als LaTeX (.tex)
             </button>
             <button class="btn-danger" id="btn-leeren" disabled>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>

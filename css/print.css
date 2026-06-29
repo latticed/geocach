@@ -174,19 +174,108 @@
     color: #7a5c10;
   }
 
-  /* Koordinaten-Notizfeld */
-  .print-notiz {
-    margin-top: 7pt;
-    border-top: 0.5pt dashed #ccc;
-    padding-top: 5pt;
-    font-size: 8pt;
-    color: #aaa;
+  /* Erledigt-Checkbox im Aufgaben-Kopf */
+  .print-checkbox {
+    display: inline-block;
+    width: 12pt;
+    height: 12pt;
+    border: 1pt solid #555;
+    border-radius: 2pt;
+    flex: 0 0 auto;
+    align-self: center;
   }
 
-  .print-notiz-linie {
+  /* Name/Datum-Zeile im Kopf */
+  .print-teilnehmer {
+    display: flex;
+    gap: 24pt;
+    margin-top: 8pt;
+    font-size: 9pt;
+    color: #333;
+  }
+
+  .print-feld-linie {
+    display: inline-block;
+    width: 120pt;
+    border-bottom: 0.5pt solid #888;
+    margin-left: 4pt;
+  }
+
+  .print-feld-linie.kurz {
+    width: 70pt;
+  }
+
+  /* === LÖSUNGSFELD === */
+  .print-loesung {
+    margin-top: 8pt;
+    padding-top: 6pt;
+    border-top: 0.5pt dashed #bbb;
+  }
+
+  .print-loesung-titel {
+    font-size: 8.5pt;
+    font-weight: bold;
+    color: #2d5a27;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    margin-bottom: 6pt;
+  }
+
+  .print-linie {
     border-bottom: 0.5pt solid #ccc;
-    margin: 4pt 0;
-    height: 12pt;
+    height: 15pt;
+  }
+
+  /* Koordinaten-Template mit Kästchen zum Ausfüllen */
+  .print-koordinaten {
+    margin-top: 8pt;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6pt 14pt;
+  }
+
+  .print-koord-label {
+    font-size: 8.5pt;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .print-koord-zeile {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5pt;
+    font-size: 11pt;
+  }
+
+  .print-koord-himmel {
+    font-weight: bold;
+    margin-right: 3pt;
+    color: #2d5a27;
+  }
+
+  .print-koord-zeichen {
+    margin: 0 1pt;
+    font-weight: bold;
+  }
+
+  .kbox {
+    display: inline-block;
+    width: 13pt;
+    height: 16pt;
+    border: 0.5pt solid #999;
+    border-radius: 1.5pt;
+  }
+
+  /* Option: jede Aufgabe auf eigene Seite */
+  .print-eigene-seite {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .print-eigene-seite:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
   }
 
   /* Footer */
